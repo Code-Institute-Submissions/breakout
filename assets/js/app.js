@@ -15,12 +15,12 @@ var leftPressed = false;
 
 //Bricks 
 var brickRowCount = 3;
-var brickColumnCount = 5;
+var brickColumnCount = 10;
 var brickWidth = 75;
 var brickHeight = 20;
 var brickPadding = 10;
 var brickOffsetTop = 30;
-var brickOffsetLeft = 30;
+var brickOffsetLeft = 60;
 
 var bricks = [];
 for(var c = 0; c < brickColumnCount; c++) {
@@ -33,10 +33,12 @@ for(var c = 0; c < brickColumnCount; c++) {
 function drawBricks() {
     for(var c = 0; c < brickColumnCount; c++) {
         for(var r = 0; r < brickRowCount; r++) {
-            bricks[c][r].x = 0;
-            bricks[c][r].y = 0;
+            var brickX = (c * (brickWidth + brickPadding)) + brickOffsetLeft;
+            var brickY = (r * (brickWidth + brickPadding)) + brickOffsetTop;
+            bricks[c][r].x = brickX;
+            bricks[c][r].y = brickY;
             ctx.beginPath();
-            ctx.rect(0, 0, brickWidth, brickHeight);
+            ctx.rect(brickX, brickY, brickWidth, brickHeight);
             ctx.fillStyle = "#a86878";
             ctx.fill();
             ctx.closePath();
@@ -84,6 +86,7 @@ function drawPaddle() {
 //erasing and re-drawing it in a new position (movement)
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBricks();
     drawBall();
     drawPaddle();
     
