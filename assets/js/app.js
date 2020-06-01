@@ -1,6 +1,8 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
+var score = 0;
+
 var ballRadius = 10;
 var x = canvas.width/2;
 var y = canvas.height-30;
@@ -75,10 +77,22 @@ function collisionDetection() {
                 if(x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                     dy = -dy;
                     b.status = 0;
+                    score++;
+                    if(score == brickRowCount * brickColumnCount) {
+                        alert("you win");
+                        document.location.reload();
+                        clearInterval(interval);
+                    }
                 }
             }
         }
     }
+}
+
+function drawScore() {
+    ctx.fonts = "50px serif";
+    ctx.fillStyle = "white";
+    ctx.fillText("Score: " + score, 20, 20);
 }
 
 //Drawing the ball (shape and color)
@@ -104,6 +118,7 @@ function draw() {
     drawBricks();
     drawBall();
     drawPaddle();
+    drawScore();
     collisionDetection();
     
     //following ifs make the ball bounce off the walls 
