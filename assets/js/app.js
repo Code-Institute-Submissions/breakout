@@ -6,11 +6,18 @@ var score = 0;
 var lives = 3;
 
 //The ball and directions 
-var ballRadius = 10;
+const ballRadius = 10;
+const ball = {
+    radius: ballRadius,
+    speed: 4,
+    dx: 4,
+    dy: -4
+}
+//var ballRadius = 10;
 var x = canvas.width/2;
 var y = canvas.height-30;
-var dx = 4;
-var dy = -4;
+//var dx = 4;
+//var dy = -4;
 
 //The paddle 
 var paddle = {
@@ -86,7 +93,7 @@ function collisionDetection() {
             var b = bricks[c][r];
             if(b.status == 1) {
                 if(x > b.x && x < b.x + brick.width && y > b.y && y < b.y + brick.height) {
-                    dy = -dy;
+                    ball.dy = -ball.dy;
                     b.status = 0;
                     score++;
                     if(score == brick.rowCount * brick.columnCount) {
@@ -115,7 +122,7 @@ function drawLives() {
 //Drawing the ball (shape and color)
 function drawBall() {
     ctx.beginPath();
-    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.arc(x, y, ball.radius, 0, Math.PI*2);
     ctx.fillStyle = "#a06878";
     ctx.fill();
     ctx.closePath();
@@ -130,8 +137,8 @@ function drawPaddle() {
 }
 
 function startGame() {
-    x += dx;
-    y += dy;
+    x += ball.dx;
+    y += ball.dy;
 }
 
 //erasing and re-drawing it in a new position (movement)
@@ -145,15 +152,15 @@ function draw() {
     collisionDetection();
     
     //following ifs make the ball bounce off the walls 
-    if(x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
-        dx = -dx;
+    if(x + ball.dx > canvas.width - ball.radius || x + ball.dx < ball.radius) {
+        ball.dx = -ball.dx;
     }
 
-    if(y + dy < ballRadius) {
-        dy = -dy;
-    } else if(y + dy > canvas.height - ballRadius) {
+    if(y + ball.dy < ball.radius) {
+        ball.dy = -ball.dy;
+    } else if(y + ball.dy > canvas.height - ball.radius) {
         if(x > paddle.xPosition && x < paddle.xPosition + paddle.width) {
-            dy = -dy;
+            ball.dy = -ball.dy;
         } else {
             lives--;
             if(!lives) {
@@ -163,8 +170,8 @@ function draw() {
             else {
                 x = canvas.width/2;
                 y = canvas.height-30;
-                dx = 2;
-                dy = -2;
+                ball.dx = 4;
+                ball.dy = -4;
                 paddle.xPosition = (canvas.width-paddle.width)/2;
             }
         }
