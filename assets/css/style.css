@@ -1,11 +1,20 @@
+html {
+    height: 100vh;
+}
+
 * {
     padding: 0;
     margin: 0;
 }
 
+/*---------------------------------- Index page */
+#menu {
+    margin: 40vh 0 auto auto;
+}
+
+/*---------------------------------- Game pages */
 canvas {
     background: #e0a8b8;
     display: block;
     margin: 0 auto;
 }
-
