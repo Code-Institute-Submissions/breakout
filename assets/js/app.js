@@ -5,6 +5,10 @@ var ctx = canvas.getContext("2d");
 var score = 0;
 var lives = 3;
 
+//Directions and positions
+var x = canvas.width/2;
+var y = canvas.height - 30;
+
 //The ball and directions 
 const ballRadius = 10;
 const ball = {
@@ -13,11 +17,7 @@ const ball = {
     dx: 4,
     dy: -4
 }
-//var ballRadius = 10;
-var x = canvas.width/2;
-var y = canvas.height-30;
-//var dx = 4;
-//var dy = -4;
+
 
 //The paddle 
 var paddle = {
@@ -136,6 +136,15 @@ function drawPaddle() {
     ctx.closePath();
 }
 
+function resetGame() {
+    x = canvas.width/2;
+    y = canvas.height - 30;
+    ball.dx = 4 * (Math.random() * 2 - 1);
+    ball.dy = -4;
+    paddle.xPosition = (canvas.width-paddle.width)/2;
+
+}
+
 function startGame() {
     x += ball.dx;
     y += ball.dy;
@@ -167,12 +176,8 @@ function draw() {
                 alert("GAME OVER");
                 document.location.reload();
             }
-            else {
-                x = canvas.width/2;
-                y = canvas.height-30;
-                ball.dx = 4;
-                ball.dy = -4;
-                paddle.xPosition = (canvas.width-paddle.width)/2;
+            else { /////////////////////////////////////////////////////////////////////////
+                resetGame();
             }
         }
     }
