@@ -1,14 +1,18 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
+//Lives and score 
 var score = 0;
+var lives = 3;
 
+//The ball and directions 
 var ballRadius = 10;
 var x = canvas.width/2;
 var y = canvas.height-30;
-var dx = 2;
-var dy = -2;
+var dx = 4;
+var dy = -4;
 
+//The paddle 
 var paddle = {
     height: 15,
     width: 100,
@@ -16,8 +20,6 @@ var paddle = {
     rightPressed: false,
     leftPressed: false
 }
-//var rightPressed = false;
-//var leftPressed = false;
 
 //Bricks 
 var brick = {
@@ -55,6 +57,7 @@ function drawBricks() {
         }
     }
 }
+
 //Left and right  arrow detection
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false); 
@@ -98,9 +101,15 @@ function collisionDetection() {
 }
 
 function drawScore() {
-    ctx.fonts = "50px serif";
+    ctx.fonts = "16px Arial";
     ctx.fillStyle = "white";
     ctx.fillText("Score: " + score, 20, 20);
+}
+
+function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
 }
 
 //Drawing the ball (shape and color)
@@ -132,6 +141,7 @@ function draw() {
     drawBall();
     drawPaddle();
     drawScore();
+    drawLives();
     collisionDetection();
     
     //following ifs make the ball bounce off the walls 
@@ -145,9 +155,18 @@ function draw() {
         if(x > paddle.xPosition && x < paddle.xPosition + paddle.width) {
             dy = -dy;
         } else {
-            alert("game over");
-            document.location.reload();
-            clearInterval(interval);
+            lives--;
+            if(!lives) {
+                alert("GAME OVER");
+                document.location.reload();
+            }
+            else {
+                x = canvas.width/2;
+                y = canvas.height-30;
+                dx = 2;
+                dy = -2;
+                paddle.xPosition = (canvas.width-paddle.width)/2;
+            }
         }
     }
 
@@ -163,10 +182,8 @@ function draw() {
         }
     }
 
-//    x += dx;
-//    y += dy;
-    startGame();
-
+    startGame(); //starts the movement of the ball
+    requestAnimationFrame(draw);
 }
 
-var interval = setInterval(draw, 10);
+draw();
