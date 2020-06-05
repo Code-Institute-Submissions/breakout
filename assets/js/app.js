@@ -16,17 +16,47 @@ const paddle = {
 }
 
 function drawPaddle() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "black";
     ctx.fillRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height);
 }
 
-function draw();
+// paddle movement //
+let leftArrow = false;
+let rightArrow = false;
+
+document.addEventListener("keydown", function(event) {
+    if(event.keyCode == 37){
+        leftArrow = true;
+    } else if(event.keyCode == 39){
+        rightArrow = true; 
+    }
+});
+
+document.addEventListener("keyup", function(event) {
+    if(event.keyCode == 37){
+        leftArrow = false;
+    } else if(event.keyCode == 39){
+        rightArrow = false; 
+    }
+});
+
+function paddleMove(){
+    if(rightArrow && paddle.xPosition + paddle.width < canvas.width) {
+        paddle.xPosition += paddle.dx;
+    } else if(leftArrow && paddle.xPosition > 0){
+        paddle.xPosition -= paddle.dx;
+    }
+}
+
+//function draw()
 
 function game() {
 
     drawPaddle();
-    draw();
-    update();
+    paddleMove();
+//    draw();
+//    update();
     requestAnimationFrame(game);
 } 
 
