@@ -3,7 +3,7 @@ const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
 // ------ Paddle -------- //
-const paddleWidth = 100;
+const paddleWidth = 120;
 const paddleHeight = 15;
 const paddleMarginBottom = 30;
 
@@ -12,7 +12,7 @@ const paddle = {
     yPosition: canvas.height - paddleHeight - paddleMarginBottom,
     width: paddleWidth,
     height: paddleHeight,
-    dx: 6
+    dx: 10
 }
 
 function paddleDraw() {
@@ -49,7 +49,7 @@ function paddleMove(){
 }
 
 // ------------------------- The ball ------------------------- //
-const ballRadius = 5;
+const ballRadius = 10;
 
 const ball = {
     xPosition: canvas.width/2,
