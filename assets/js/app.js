@@ -9,24 +9,28 @@ var lives = 3;
 var x = canvas.width/2;
 var y = canvas.height - 30;
 
+//The paddle 
+const paddleMarginBottom = 50;
+const paddleHeight = 15;
+var paddle = {
+    width: 100,
+    xPosition: (canvas.width - 100) / 2,
+    yPosition: canvas.height - paddleHeight - paddleMarginBottom,
+    rightPressed: false,
+    leftPressed: false
+}
+
 //The ball and directions 
 const ballRadius = 10;
 const ball = {
+    y: paddle.yPosition - ballRadius,
+    x: x,
     radius: ballRadius,
     speed: 4,
     dx: 4,
     dy: -4
 }
 
-
-//The paddle 
-var paddle = {
-    height: 15,
-    width: 100,
-    xPosition: (canvas.width - 100) / 2,
-    rightPressed: false,
-    leftPressed: false
-}
 
 //Bricks 
 var brick = {
@@ -85,7 +89,23 @@ function keyUpHandler(e) {
     }
 }
 
+// BALL AND PADDLE COLLISION
+function paddleCollision(){
+    if(ball.x < paddle.xPosition + paddle.width && ball.x > paddle.xPosition && paddle.yPosition < paddle.yPosition + paddle.height && ball.y > paddle.yPosition){
+        
+        // Collision point on the paddle
+        let collidePoint = ball.x - (paddle.x + paddle.width/2);
 
+        collidePoint = collidePoint / (paddle.width/2);
+        
+        // Calculating the angle
+        let angle = collidePoint * Math.PI/3;
+            
+            
+        ball.dx = ball.speed * Math.sin(angle);
+        ball.dy = - ball.speed * Math.cos(angle);
+    }
+}
 
 function collisionDetection() {
     for(var c = 0; c < brick.columnCount; c++) {
@@ -130,7 +150,7 @@ function drawBall() {
 
 function drawPaddle() {
     ctx.beginPath();
-    ctx.rect(paddle.xPosition, canvas.height - paddle.height, paddle.width, paddle.height);
+    ctx.rect(paddle.xPosition, canvas.height - paddleHeight, paddle.width, paddleHeight);
     ctx.fillStyle = "#a06878";
     ctx.fill();
     ctx.closePath();
@@ -150,6 +170,8 @@ function startGame() {
     y += ball.dy;
 }
 
+
+
 //erasing and re-drawing it in a new position (movement)
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -158,29 +180,32 @@ function draw() {
     drawPaddle();
     drawScore();
     drawLives();
+    paddleCollision();
     collisionDetection();
     
     //following ifs make the ball bounce off the walls 
     if(x + ball.dx > canvas.width - ball.radius || x + ball.dx < ball.radius) {
         ball.dx = -ball.dx;
+    } else {
+            if(y + ball.dy < ball.radius) {
+                ball.dy = -ball.dy;
+            } else if(y + ball.dy > canvas.height - ball.radius) {
+                if( x > paddle.xPosition && x < paddle.xPosition + paddle.width) {
+                paddleCollision();
+                } else {
+                    lives--;
+                    if(!lives) {
+                        alert("GAME OVER");
+                        document.location.reload();
+                    }
+                    else { /////////////////////////////////////////////////////////////////////////
+                        resetGame();
+                    }
+                }
+            }
     }
 
-    if(y + ball.dy < ball.radius) {
-        ball.dy = -ball.dy;
-    } else if(y + ball.dy > canvas.height - ball.radius) {
-        if(x > paddle.xPosition && x < paddle.xPosition + paddle.width) {
-            ball.dy = -ball.dy;
-        } else {
-            lives--;
-            if(!lives) {
-                alert("GAME OVER");
-                document.location.reload();
-            }
-            else { /////////////////////////////////////////////////////////////////////////
-                resetGame();
-            }
-        }
-    }
+
 
     if(paddle.rightPressed) {
         paddle.xPosition += 7;
