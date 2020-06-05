@@ -56,9 +56,9 @@ const ball = {
     xPosition: canvas.width/2,
     yPosition: paddle.yPosition - ballRadius,
     radius: ballRadius,
-    speed: 4,
-    dx: 4,
-    dy: -4
+    speed: 6,
+    dx: 5,
+    dy: -5
 }
 
 function ballDraw() {
@@ -74,6 +74,33 @@ function ballDraw() {
 function ballMove() {
     ball.xPosition += ball.dx;
     ball.yPosition += ball.dy;
+}
+
+// ---------------- Bricks -------------------- //
+const brick = {
+    row: 3,
+    column: 7,
+    width: 55,
+    height: 15,
+    offsetLeft: 20,
+    offsetTop: 20,
+    marginTop: 40,
+    fillColor: "black"
+}
+
+let bricks = [];
+
+function bricksCreate() {
+    for(let r = 0; r < brick.row; r++) {
+        bricks[r] = [];
+        for(let c = 0; c < brick.column; c++) {
+            bricks[c][r] = {
+                x: c * (brick.width + brick.offsetLeft) + brick.offsetLeft,
+                y: r * (brick.height + brick.offsetTop) + brick.offsetTop + brick.marginTop,
+                status: true
+            }
+        }
+    }
 }
 
 // ---------------- Collisions ---------------- //
@@ -92,6 +119,19 @@ function wallCollision() {
     }
 }
 
+function paddleCollision() {
+    if(ball.yPosition > paddle.yPosition && ball.yPosition < paddle.yPosition + paddle.height
+       && ball.xPosition > paddle.xPosition && ball.xPosition < paddle.xPosition + paddle.width) {
+
+        let collidePoint = ball.xPosition - (paddle.xPosition + paddle.width/2);
+        collidePoint = collidePoint / (paddle.width/2);
+
+        let angle = collidePoint * (Math.PI/3);
+        ball.dx = ball.speed * Math.sin(angle);
+        ball.dy = - ball.speed * Math.cos(angle);
+    }
+}
+
 // ---------------- Initialising -------------------- //
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -103,6 +143,7 @@ function game() {
     paddleMove();
     ballMove();
     wallCollision();
+    paddleCollision();
     draw();
 //    update();
     requestAnimationFrame(game);
