@@ -15,8 +15,7 @@ const paddle = {
     dx: 6
 }
 
-function drawPaddle() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function paddleDraw() {
     ctx.fillStyle = "black";
     ctx.fillRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height);
 }
@@ -49,13 +48,42 @@ function paddleMove(){
     }
 }
 
-//function draw()
+// ------------------------- The ball ------------------------- //
+const ballRadius = 5;
+
+const ball = {
+    xPosition: canvas.width/2,
+    yPosition: paddle.yPosition - ballRadius,
+    radius: ballRadius,
+    speed: 4,
+    dx: 4,
+    dy: -4
+}
+
+function ballDraw() {
+    ctx.beginPath();
+
+    ctx.arc(ball.xPosition, ball.yPosition, ball.radius, 0, Math.PI*2);
+    ctx.fillStyle = "black";
+    ctx.fill();
+
+    ctx.closePath();
+}
+
+function ballMove() {
+    ball.xPosition += ball.dx;
+    ball.yPosition += ball.dy;
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ballDraw();
+    paddleDraw();
+}
 
 function game() {
-
-    drawPaddle();
     paddleMove();
-//    draw();
+    draw();
 //    update();
     requestAnimationFrame(game);
 } 
