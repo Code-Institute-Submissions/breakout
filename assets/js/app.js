@@ -1,6 +1,7 @@
 //Setting up the canvas 
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
+const lives = 3;
 
 // ------ Paddle -------- //
 const paddleWidth = 120;
@@ -75,6 +76,23 @@ function ballMove() {
     ball.yPosition += ball.dy;
 }
 
+// ---------------- Collisions ---------------- //
+function wallCollision() {
+    if(ball.xPosition + ball.radius > canvas.width || ball.xPosition - ball.radius < 0) {
+        ball.dx = -ball.dx;
+    }
+
+    if(ball.yPosition - ball.radius < 0) {
+        ball.dy = -ball.dy;
+    }
+
+    if(ball.yPosition + ball.radius > canvas.height) {
+        lives--;
+        resetBall();
+    }
+}
+
+// ---------------- Initialising -------------------- //
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ballDraw();
@@ -83,6 +101,8 @@ function draw() {
 
 function game() {
     paddleMove();
+    ballMove();
+    wallCollision();
     draw();
 //    update();
     requestAnimationFrame(game);
