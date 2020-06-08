@@ -23,6 +23,7 @@ function gameOver() {
 
 function youWin() {
     alert("You Win");
+    document.location.replace("./index.html")
 }
 
 function levelUp() {
