@@ -1,7 +1,6 @@
 //Setting up the canvas 
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-const lives = 3;
 
 // ------ Paddle -------- //
 const paddleWidth = 120;
@@ -118,6 +117,8 @@ function bricksDraw() {
 }
 
 // ---------------- Collisions ---------------- //
+// Wall bounce //
+var lives = 3;
 function wallCollision() {
     if(ball.xPosition + ball.radius > canvas.width || ball.xPosition - ball.radius < 0) {
         ball.dx = -ball.dx;
@@ -146,6 +147,26 @@ function paddleCollision() {
     }
 }
 
+// brick collision //
+let score = 0;
+const scoreUnit = 10;
+
+function ballCollision() {
+    for(let r = 0; r < brick.row; r++) {
+        for(let c = 0; c < brick.column; c++) {
+            let b = bricks[r][c];
+            if(b.status) {
+                if(ball.xPosition + ball.radius > b.x && ball.xPosition - ball.radius < b.x + brick.width
+                   && ball.yPosition + ball.radius > b.y && ball.yPosition - ball.radius < b.y + brick.height) {
+                    b.status = false;
+                    ball.dy = -ball.dy;
+                    score += scoreUnit;
+                }
+            }
+        }
+    }
+}
+
 // ---------------- Initialising -------------------- //
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -159,6 +180,7 @@ function game() {
     ballMove();
     wallCollision();
     paddleCollision();
+    ballCollision();
     draw();
 //    update();
     requestAnimationFrame(game);
