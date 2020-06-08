@@ -4,9 +4,10 @@ const ctx = canvas.getContext("2d");
 
 // Game variables and constants //
 let level = 1;
+const maxLevel = 3;
 var lives = 3;
 let score = 0;
-const scoreUnit = 1 * lives;
+var scoreUnit = 1 * lives;
 let leftArrow = false;
 let rightArrow = false;
 let gameLost = false;
@@ -81,6 +82,13 @@ function ballMove() {
     ball.yPosition += ball.dy;
 }
 
+function resetBall(){
+    ball.xPosition = canvas.width/2;
+    ball.yPosition = paddle.yPosition - ballRadius;
+    ball.dx = 5 * (Math.random() * 2 - 1);
+    ball.dy = -5;
+}
+
 // ---------------- Bricks -------------------- //
 const brick = {
     row: 3,
@@ -135,6 +143,7 @@ function wallCollision() {
 
     if(ball.yPosition + ball.radius > canvas.height) {
         lives--;
+        scoreUnit--;
         resetBall();
     }
 }
@@ -185,6 +194,26 @@ function statsDraw() {
 function gameOver() {
     if(lives <= 0) {
         gameLost = true;
+    }
+}
+
+function levelUp() {
+    let levelDone = true; 
+    for(let r = 0; r < brick.row; r++) {
+        for(let c = 0; c < brick.column; c++) {
+            levelDone = levelDone && !bricks[r][c].status;
+        }
+    }
+    if(levelDone) {
+        if(level > maxLevel) {
+            gameOver = true;
+            return;
+        }
+        brick.row++;
+        bricksCreate();
+        ball.speed += 0.5;
+        resetBall();
+        level++;
     }
 }
 
