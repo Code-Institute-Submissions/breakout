@@ -12,6 +12,16 @@ let leftArrow = false;
 let rightArrow = false;
 let gameLost = false;
 
+// Game over function //
+function gameOver() {
+    if(lives <= 0) {
+        gameLost = true;
+        alert("you lose");
+        document.location.reload();
+    }
+}
+
+
 // ------ Paddle -------- //
 const paddleWidth = 120;
 const paddleHeight = 15;
@@ -146,6 +156,10 @@ function wallCollision() {
         scoreUnit--;
         resetBall();
     }
+
+    if(lives == 0) {
+        gameOver();
+    }
 }
 
 function paddleCollision() {
@@ -190,12 +204,6 @@ function statsDraw() {
     gameStats("Level: " + level, canvas.width/2 - 45, 35);
 }
 
-// game over //
-function gameOver() {
-    if(lives <= 0) {
-        gameLost = true;
-    }
-}
 
 function levelUp() {
     let levelDone = true; 
