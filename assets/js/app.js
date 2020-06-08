@@ -22,8 +22,9 @@ function gameOver() {
 }
 
 function youWin() {
-    alert("You Win");
-    document.location.replace("./index.html")
+    document.getElementById("gameWon").style.display = "block";
+    ball.dx = 0;
+    ball.dy = 0;
 }
 
 function levelUp() {
@@ -128,8 +129,8 @@ function resetBall(){
 // ---------------- Bricks -------------------- //
 const brick = {
     row: 1,
-    column: 3,
-    width: 55,
+    column: 1,
+    width: 600,
     height: 15,
     offsetLeft: 22.9,
     offsetTop: 20,

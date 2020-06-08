@@ -18,3 +18,20 @@ canvas {
     display: block;
     margin: 0 auto;
 }
+
+/* -------------------- Game win and lose ---------------------- */
+/* Game win */
+#gameScreen {
+    padding-top: 5vh;
+    position: relative;
+}
+
+#gameWon {
+    position: absolute;
+    z-index: 100;
+    height: 640px;
+    width: 960px;
+    background: green;
+    margin: 0 75px;
+    display: none;
+}
