@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 
 // Game variables and constants //
 let level = 1;
-const maxLevel = 3;
+const maxLevel = 1;
 var lives = 3;
 let score = 0;
 var scoreUnit = 1 * lives;
@@ -12,12 +12,37 @@ let leftArrow = false;
 let rightArrow = false;
 let gameLost = false;
 
-// Game over function //
+// Game over functions //
 function gameOver() {
     if(lives <= 0) {
         gameLost = true;
         alert("you lose");
         document.location.reload();
+    }
+}
+
+function youWin() {
+    alert("You Win");
+}
+
+function levelUp() {
+    let levelDone = true; 
+    for(let r = 0; r < brick.row; r++) {
+        for(let c = 0; c < brick.column; c++) {
+            levelDone = levelDone && !bricks[r][c].status;
+        }
+    }
+    if(levelDone) {
+        if(level >= maxLevel) {
+            youWin();
+            gameOver = true;
+            return;
+        }
+        brick.row++;
+        bricksCreate();
+        ball.speed += 0.5;
+        resetBall();
+        level++;
     }
 }
 
@@ -101,8 +126,8 @@ function resetBall(){
 
 // ---------------- Bricks -------------------- //
 const brick = {
-    row: 3,
-    column: 12,
+    row: 1,
+    column: 3,
     width: 55,
     height: 15,
     offsetLeft: 22.9,
@@ -205,25 +230,7 @@ function statsDraw() {
 }
 
 
-function levelUp() {
-    let levelDone = true; 
-    for(let r = 0; r < brick.row; r++) {
-        for(let c = 0; c < brick.column; c++) {
-            levelDone = levelDone && !bricks[r][c].status;
-        }
-    }
-    if(levelDone) {
-        if(level > maxLevel) {
-            gameOver = true;
-            return;
-        }
-        brick.row++;
-        bricksCreate();
-        ball.speed += 0.5;
-        resetBall();
-        level++;
-    }
-}
+
 
 // ---------------- Initialising -------------------- //
 function draw() {
@@ -234,14 +241,19 @@ function draw() {
     statsDraw();
 }
 
-function game() {
+function update() {
     paddleMove();
     ballMove();
     wallCollision();
     paddleCollision();
     ballCollision();
+    levelUp();
+
+}
+
+function game() {
     draw();
-//    update();
+    update();
 
     if(!gameLost) {
         requestAnimationFrame(game);
