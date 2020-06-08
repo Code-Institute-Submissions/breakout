@@ -23,6 +23,7 @@ function gameOver() {
 
 function youWin() {
     document.getElementById("gameWon").style.display = "block";
+    document.getElementById("winScore").innerHTML = `Score: ${score}`;
     ball.dx = 0;
     ball.dy = 0;
 }
@@ -263,3 +264,5 @@ function game() {
 } 
 
 game();
+
+// Win screen //
