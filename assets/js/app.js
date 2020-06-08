@@ -1,6 +1,15 @@
-//Setting up the canvas 
+// Setting up the canvas //
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
+
+// Game variables and constants //
+let level = 1;
+var lives = 3;
+let score = 0;
+const scoreUnit = 1 * lives;
+let leftArrow = false;
+let rightArrow = false;
+let gameLost = false;
 
 // ------ Paddle -------- //
 const paddleWidth = 120;
@@ -21,9 +30,6 @@ function paddleDraw() {
 }
 
 // paddle movement //
-let leftArrow = false;
-let rightArrow = false;
-
 document.addEventListener("keydown", function(event) {
     if(event.keyCode == 37){
         leftArrow = true;
@@ -118,7 +124,6 @@ function bricksDraw() {
 
 // ---------------- Collisions ---------------- //
 // Wall bounce //
-var lives = 3;
 function wallCollision() {
     if(ball.xPosition + ball.radius > canvas.width || ball.xPosition - ball.radius < 0) {
         ball.dx = -ball.dx;
@@ -148,9 +153,6 @@ function paddleCollision() {
 }
 
 // brick collision //
-let score = 0;
-const scoreUnit = 10;
-
 function ballCollision() {
     for(let r = 0; r < brick.row; r++) {
         for(let c = 0; c < brick.column; c++) {
@@ -166,6 +168,25 @@ function ballCollision() {
         }
     }
 }
+// ---------------- Score and Lives -------------------- //
+function gameStats(text, textX, textY) {
+    ctx.fillStyle = "black";
+    ctx.font = "25px Arial";
+    ctx.fillText(text, textX, textY);
+}
+
+function statsDraw() {
+    gameStats("Score: " + score, 35, 35);
+    gameStats("Lives: " + lives, canvas.width - 135, 35);
+    gameStats("Level: " + level, canvas.width/2 - 45, 35);
+}
+
+// game over //
+function gameOver() {
+    if(lives <= 0) {
+        gameLost = true;
+    }
+}
 
 // ---------------- Initialising -------------------- //
 function draw() {
@@ -173,6 +194,7 @@ function draw() {
     ballDraw();
     paddleDraw();
     bricksDraw();
+    statsDraw();
 }
 
 function game() {
@@ -183,7 +205,10 @@ function game() {
     ballCollision();
     draw();
 //    update();
-    requestAnimationFrame(game);
+
+    if(!gameLost) {
+        requestAnimationFrame(game);
+    }   
 } 
 
 game();
