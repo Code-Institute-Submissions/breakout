@@ -79,10 +79,10 @@ function ballMove() {
 // ---------------- Bricks -------------------- //
 const brick = {
     row: 3,
-    column: 7,
+    column: 12,
     width: 55,
     height: 15,
-    offsetLeft: 20,
+    offsetLeft: 22.9,
     offsetTop: 20,
     marginTop: 40,
     fillColor: "black"
@@ -94,10 +94,24 @@ function bricksCreate() {
     for(let r = 0; r < brick.row; r++) {
         bricks[r] = [];
         for(let c = 0; c < brick.column; c++) {
-            bricks[c][r] = {
+            bricks[r][c] = {
                 x: c * (brick.width + brick.offsetLeft) + brick.offsetLeft,
                 y: r * (brick.height + brick.offsetTop) + brick.offsetTop + brick.marginTop,
                 status: true
+            }
+        }
+    }
+}
+
+bricksCreate();
+
+function bricksDraw() {
+    for(let r = 0; r < brick.row; r++) {
+        for(let c = 0; c < brick.column; c++) {
+            let b = bricks[r][c];
+            if(b.status) {
+                ctx.fillStyle = brick.fillColor;
+                ctx.fillRect(b.x, b.y, brick.width, brick.height);
             }
         }
     }
@@ -137,6 +151,7 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ballDraw();
     paddleDraw();
+    bricksDraw();
 }
 
 function game() {
