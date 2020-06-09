@@ -16,8 +16,8 @@ let gameLost = false;
 function gameOver() {
     if(lives <= 0) {
         gameLost = true;
-        alert("you lose");
-        document.location.reload();
+        document.getElementById("gameLost").style.display = "block";
+        document.getElementById("loseScore").innerHTML = `Score: ${score}`;
     }
 }
 
@@ -129,11 +129,11 @@ function resetBall(){
 
 // ---------------- Bricks -------------------- //
 const brick = {
-    row: 1,
-    column: 1,
-    width: 600,
+    row: 3,
+    column: 3,
+    width: 260,
     height: 15,
-    offsetLeft: 22.9,
+    offsetLeft: 45,
     offsetTop: 20,
     marginTop: 40,
     fillColor: "black"
@@ -231,9 +231,6 @@ function statsDraw() {
     gameStats("Lives: " + lives, canvas.width - 135, 35);
     gameStats("Level: " + level, canvas.width/2 - 45, 35);
 }
-
-
-
 
 // ---------------- Initialising -------------------- //
 function draw() {
