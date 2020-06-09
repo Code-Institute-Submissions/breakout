@@ -10,6 +10,7 @@ let score = 0;
 var scoreUnit = 1 * lives;
 let leftArrow = false;
 let rightArrow = false;
+let paused = false;
 let gameLost = false;
 
 // Game over functions //
@@ -232,6 +233,21 @@ function statsDraw() {
     gameStats("Level: " + level, canvas.width/2 - 45, 35);
 }
 
+// pause game //
+function pausePlay() {
+    if(!paused) {
+        paused = true;
+    } else if(paused) {
+        paused = false;
+    }
+}
+
+document.addEventListener("keydown", function(event) {
+    if(event.keyCode == 27){
+        pausePlay();
+    }
+});
+
 // ---------------- Initialising -------------------- //
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -253,7 +269,10 @@ function update() {
 
 function game() {
     draw();
-    update();
+    if(!paused) {
+        update();
+    }
+    
 
     if(!gameLost) {
         requestAnimationFrame(game);
@@ -261,5 +280,3 @@ function game() {
 } 
 
 game();
-
-// Win screen //
