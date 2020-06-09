@@ -1,3 +1,4 @@
+/*---------------------------------- General Styles*/
 html {
     height: 100vh;
 }
@@ -7,9 +8,19 @@ html {
     margin: 0;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Quicksand&display=swap');
+
+h1, h3, h5 {
+    font-family: 'Nunito', sans-serif;
+}
+
+p, a, button {
+    font-family: 'Quicksand', sans-serif;
+}
+
 /*---------------------------------- Index page */
 #menu {
-    margin: 40vh 0 auto auto;
+    margin: 20vh 0 auto auto;
 }
 
 /*---------------------------------- Game pages */

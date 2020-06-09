@@ -222,7 +222,7 @@ function ballCollision() {
 // ---------------- Score and Lives -------------------- //
 function gameStats(text, textX, textY) {
     ctx.fillStyle = "black";
-    ctx.font = "25px Arial";
+    ctx.font = "25px Quicksand";
     ctx.fillText(text, textX, textY);
 }
 
