@@ -44,9 +44,16 @@ canvas {
     z-index: 100;
     height: 640px;
     width: 960px;
-    background: green;
+    background: rgba(255, 255, 255, 0.3);
     margin: 0 75px;
     display: none;
+}
+
+#winText {
+    background: #fff;
+    padding: 3vw;
+    margin: 0 20vw;
+    border-radius: 10px;
 }
 
 #gameLost {
