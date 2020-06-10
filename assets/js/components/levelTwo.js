@@ -20,7 +20,7 @@ var ball = {
     xPosition: 1, //The 1's  are here simply to be overwritten
     yPosition: 1 - ballRadius,
     radius: ballRadius,
-    speed: 6,
-    dx: 5,
-    dy: -5
+    speed: 7,
+    dx: 5.5,
+    dy: -5.5
 }
