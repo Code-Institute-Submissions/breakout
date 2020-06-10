@@ -52,6 +52,9 @@ p, a, button {
 }
 
 /*---------------------------------- Game pages */
+canvas {
+    margin: 0 75px;
+}
 
 /* -------------------- Game win and lose ---------------------- */
 /* Game win */
@@ -118,7 +121,6 @@ p, a, button {
     background-size: 100%;
     background-position-y: 80%;
     display: block;
-    margin: 0 auto;
 }
 
 /* ------------------------- Level 1 -------------------- */
