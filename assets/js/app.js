@@ -50,6 +50,29 @@ function levelUp() {
     }
 }
 
+// --------- Rounded rectangle function --------- //
+// This section got a lot from from the guide at https://newfivefour.com/javascript-canvas-rounded-rectangle.html //
+function roundRect(xPosition, yPosition, width, height, rounding, color) {
+    const halfRadians = (2 * Math.PI)/2
+    const quarterRadians = (2 * Math.PI)/4
+
+    ctx.arc(rounding + xPosition, rounding + yPosition, rounding, -quarterRadians, halfRadians, true);
+    ctx.lineTo(xPosition, yPosition + height - rounding);
+
+    ctx.arc(rounding + xPosition, height - rounding + yPosition, rounding, halfRadians, quarterRadians, true);
+    ctx.lineTo(xPosition + width - rounding, yPosition + height);
+
+    ctx.arc(xPosition + width - rounding, yPosition + height - rounding, rounding, quarterRadians, 0, true);
+    ctx.lineTo(xPosition + width, yPosition + rounding);
+
+    ctx.arc(xPosition + width - rounding, yPosition + rounding, rounding, 0, -quarterRadians, true)  
+    ctx.lineTo(xPosition + rounding, yPosition)  
+
+    ctx.fillStyle = `${color}`;
+    ctx.fill(); 
+}
+
+
 
 // ------ Paddle -------- //
 const paddleWidth = 120;
@@ -61,12 +84,16 @@ const paddle = {
     yPosition: canvas.height - paddleHeight - paddleMarginBottom,
     width: paddleWidth,
     height: paddleHeight,
-    dx: 10
+    dx: 10,
+    color: "black"
 }
 
 function paddleDraw() {
-    ctx.fillStyle = "black";
-    ctx.fillRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height);
+    //ctx.fillStyle = "black";
+    //ctx.fillRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height);
+    ctx.beginPath();
+    roundRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height, 7, paddle.color);
+    ctx.stroke();
 }
 
 // paddle movement //
