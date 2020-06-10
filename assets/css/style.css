@@ -72,3 +72,20 @@ canvas {
     margin: 0 20vw;
     border-radius: 10px;
 }
+
+#gamePaused {
+    position: absolute;
+    z-index: 100;
+    height: 640px;
+    width: 960px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 75px;
+    display: none;
+}
+
+#pauseText {
+    background: #fff;
+    padding: 3vw;
+    margin: 0 20vw;
+    border-radius: 10px;
+}

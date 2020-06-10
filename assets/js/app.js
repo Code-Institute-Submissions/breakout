@@ -266,8 +266,10 @@ function statsDraw() {
 function pausePlay() {
     if(!paused) {
         paused = true;
+        document.getElementById("gamePaused").style.display = "block";
     } else if(paused) {
         paused = false;
+        document.getElementById("gamePaused").style.display = "none";
     }
 }
 
