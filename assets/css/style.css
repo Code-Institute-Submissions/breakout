@@ -31,7 +31,7 @@ p, a, button {
 }
 
 #heroImage {
-    background-image: url("./assets/img/dayBreakerMainMenu.jpg");
+    background-image: url("../img/dayBreakerMainMenu.jpg");
     height: 100vh;
     width: 100%;
     background-size: 100%;
@@ -122,7 +122,7 @@ canvas {
 
 /* ------------------------- Level 1 -------------------- */
 .backgroundLevelOne {
-    background-image: url("./assets/img/breakoutBgOne.jpg");
+    background-image: url("../img/breakoutBgOne.jpg");
     background-size: 100%;
     background-position-y: 80%;
     display: block;
