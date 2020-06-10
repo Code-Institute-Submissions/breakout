@@ -3,8 +3,6 @@ const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
 // Game variables and constants //
-let level = 1;
-const maxLevel = 1;
 var lives = 3;
 let score = 0;
 var scoreUnit = 1 * lives;
@@ -122,16 +120,10 @@ function paddleMove(){
 }
 
 // ------------------------- The ball ------------------------- //
-const ballRadius = 10;
+// Overwriting the x and y position of the ball
+ball.xPosition = canvas.width/2;
+ball.yPosition = paddle.yPosition - ballRadius;
 
-const ball = {
-    xPosition: canvas.width/2,
-    yPosition: paddle.yPosition - ballRadius,
-    radius: ballRadius,
-    speed: 6,
-    dx: 5,
-    dy: -5
-}
 
 function ballDraw() {
     ctx.beginPath();
@@ -156,18 +148,6 @@ function resetBall(){
 }
 
 // ---------------- Bricks -------------------- //
-const brick = {
-    row: 3,
-    column: 3,
-    width: 260,
-    height: 15,
-    offsetLeft: 45,
-    offsetTop: 20,
-    marginTop: 40,
-    borderColor: "white",
-    fillColor: "white"
-}
-
 let bricks = [];
 
 function bricksCreate() {
