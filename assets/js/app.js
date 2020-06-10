@@ -52,7 +52,7 @@ function levelUp() {
 
 // --------- Rounded rectangle function --------- //
 // This section got a lot from from the guide at https://newfivefour.com/javascript-canvas-rounded-rectangle.html //
-function roundRect(xPosition, yPosition, width, height, rounding, color) {
+function roundRect(xPosition, yPosition, width, height, rounding, color, borderColor) {
     const halfRadians = (2 * Math.PI)/2
     const quarterRadians = (2 * Math.PI)/4
 
@@ -68,11 +68,10 @@ function roundRect(xPosition, yPosition, width, height, rounding, color) {
     ctx.arc(xPosition + width - rounding, yPosition + rounding, rounding, 0, -quarterRadians, true)  
     ctx.lineTo(xPosition + rounding, yPosition)  
 
+    ctx.strokeStyle = `${borderColor}`;
     ctx.fillStyle = `${color}`;
     ctx.fill(); 
 }
-
-
 
 // ------ Paddle -------- //
 const paddleWidth = 120;
@@ -85,14 +84,15 @@ const paddle = {
     width: paddleWidth,
     height: paddleHeight,
     dx: 10,
-    color: "black"
+    color: "black",
+    borderColor: "black"
 }
 
 function paddleDraw() {
     //ctx.fillStyle = "black";
     //ctx.fillRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height);
     ctx.beginPath();
-    roundRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height, 7, paddle.color);
+    roundRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height, 7, paddle.color, paddle.borderColor);
     ctx.stroke();
 }
 
@@ -164,7 +164,8 @@ const brick = {
     offsetLeft: 45,
     offsetTop: 20,
     marginTop: 40,
-    fillColor: "black"
+    borderColor: "white",
+    fillColor: "white"
 }
 
 let bricks = [];
@@ -189,8 +190,9 @@ function bricksDraw() {
         for(let c = 0; c < brick.column; c++) {
             let b = bricks[r][c];
             if(b.status) {
-                ctx.fillStyle = brick.fillColor;
-                ctx.fillRect(b.x, b.y, brick.width, brick.height);
+                ctx.beginPath();
+                roundRect(b.x, b.y, brick.width, brick.height, 7, brick.fillColor, brick.borderColor);
+                ctx.stroke();
             }
         }
     }
