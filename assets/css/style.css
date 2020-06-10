@@ -52,13 +52,6 @@ p, a, button {
 }
 
 /*---------------------------------- Game pages */
-canvas {
-    background-image: url("/assets/img/breakoutBgOne.jpg");
-    background-size: 100%;
-    background-position-y: 80%;
-    display: block;
-    margin: 0 auto;
-}
 
 /* -------------------- Game win and lose ---------------------- */
 /* Game win */
@@ -117,4 +110,18 @@ canvas {
     padding: 3vw;
     margin: 0 20vw;
     border-radius: 10px;
+}
+
+/* ------------------------- Level 1 -------------------- */
+.backgroundLevelOne {
+    background-image: url("/assets/img/breakoutBgOne.jpg");
+    background-size: 100%;
+    background-position-y: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ------------------------- Level 1 -------------------- */
+.backgroundLevelTwo {
+    background: grey;
 }
