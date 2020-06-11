@@ -107,6 +107,11 @@ canvas {
     margin: 0 20vw;
     border-radius: 10px;
 }
+
+#loseText div button {
+    display: block;
+    margin: 1vh 0;
+}
 /* Pause functions */
 #gamePaused {
     position: absolute;
@@ -123,6 +128,11 @@ canvas {
     padding: 3vw;
     margin: 0 20vw;
     border-radius: 10px;
+}
+
+#pauseText div button {
+    display: block;
+    margin: 1vh 0;
 }
 
 /* ------------------------- Level 1 -------------------- */
