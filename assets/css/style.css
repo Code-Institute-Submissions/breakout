@@ -133,7 +133,12 @@ canvas {
     display: block;
 }
 
-/* ------------------------- Level 1 -------------------- */
+/* ------------------------- Level 2 -------------------- */
+.backgroundLevelTwo {
+    background: grey;
+}
+
+/* ------------------------- Level 3 -------------------- */
 .backgroundLevelTwo {
     background: grey;
 }
