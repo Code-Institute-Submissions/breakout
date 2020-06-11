@@ -1,3 +1,7 @@
+// Setting up the canvas //
+const canvas = document.getElementById("levelThreeCanvas");
+const ctx = canvas.getContext("2d");
+
 // ------- Levels ---------//
 let level = 3;
 let maxLevel = 3;

@@ -1,7 +1,3 @@
-// Setting up the canvas //
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
-
 // Game variables and constants //
 var lives = 3;
 let score = 0;
@@ -22,7 +18,7 @@ function gameOver() {
 
 function youWin() {
     document.getElementById("gameWon").style.display = "block";
-    document.getElementById("winScore").innerHTML = `Score: ${score}`;
+    document.getElementsByClassName("winScore")[0].innerHTML = `Score: ${score}`;
     ball.dx = 0;
     ball.dy = 0;
 }
