@@ -21,13 +21,18 @@ p, a, button {
 /*---------------------------------- Index page */
 #menu {
     padding-top: 5vh;
-    padding-bottom: 10vh;
+    padding-bottom: 5vh;
     background: rgba(255, 255, 255, 0.4);
     border-radius: 10px;
 }
 
 #menu h1 {
     margin-bottom: 1rem;
+}
+
+#menu p a,
+#menu button {
+    width: 10vw;
 }
 
 #heroImage {
