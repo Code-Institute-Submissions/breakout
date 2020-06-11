@@ -72,19 +72,15 @@ const paddleWidth = 120;
 const paddleHeight = 15;
 const paddleMarginBottom = 30;
 
-const paddle = {
+paddle = {
     xPosition: canvas.width/2 - paddleWidth/2,
     yPosition: canvas.height - paddleHeight - paddleMarginBottom,
     width: paddleWidth,
     height: paddleHeight,
-    dx: 10,
-    color: "black",
-    borderColor: "black"
+    dx: 10
 }
 
 function paddleDraw() {
-    //ctx.fillStyle = "black";
-    //ctx.fillRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height);
     ctx.beginPath();
     roundRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height, 7, paddle.color, paddle.borderColor);
     ctx.stroke();
@@ -125,7 +121,9 @@ function ballDraw() {
     ctx.beginPath();
 
     ctx.arc(ball.xPosition, ball.yPosition, ball.radius, 0, Math.PI*2);
-    ctx.fillStyle = "black";
+    ctx.strokeStyle = ball.border;
+    ctx.stroke();
+    ctx.fillStyle = ball.color;
     ctx.fill();
 
     ctx.closePath();

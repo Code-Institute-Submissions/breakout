@@ -145,7 +145,10 @@ canvas {
 
 /* ------------------------- Level 2 -------------------- */
 .backgroundLevelTwo {
-    background: grey;
+    background-image: url("../img/levelTwoBg.jpg");
+    background-size: 100%;
+    background-position-y: 20%;
+    display: block;
 }
 
 /* ------------------------- Level 3 -------------------- */

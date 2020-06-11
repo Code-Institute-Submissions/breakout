@@ -19,6 +19,12 @@ var brick = {
     fillColor: "white"
 }
 
+// ----------- The Paddle ----------- //
+var paddle = {
+    color: "black",
+    borderColor: "white"
+}
+
 // ----------- The ball ------------- //
 const ballRadius = 10;
 var ball = {
@@ -27,7 +33,9 @@ var ball = {
     radius: ballRadius,
     speed: 8,
     dx: 6,
-    dy: -6
+    dy: -6,
+    color: "black",
+    border: "black"
 }
 
 //A function for moving a row of bricks in to the right by 50px

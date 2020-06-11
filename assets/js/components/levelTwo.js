@@ -18,6 +18,12 @@ var brick = {
     fillColor: "white"
 }
 
+// ----------- The Paddle ----------- //
+var paddle = {
+    color: "black",
+    borderColor: "white"
+}
+
 // ----------- The ball ------------- //
 const ballRadius = 10;
 var ball = {
@@ -26,5 +32,7 @@ var ball = {
     radius: ballRadius,
     speed: 7,
     dx: 5.5,
-    dy: -5.5
+    dy: -5.5,
+    color: "white",
+    border: "white"
 }
