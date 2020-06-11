@@ -63,12 +63,12 @@ canvas {
 
 /* -------------------- Game win and lose ---------------------- */
 /* Game win */
-#gameScreen {
+.gameScreen {
     padding-top: 5vh;
     position: relative;
 }
 
-#gameWon {
+.gameWon {
     position: absolute;
     z-index: 100;
     height: 640px;
@@ -78,20 +78,20 @@ canvas {
     display: none;
 }
 
-#winText {
+.winText {
     background: #fff;
     padding: 3vw;
     margin: 0 20vw;
     border-radius: 10px;
 }
 
-#winText div button {
+.winText div button {
     display: block;
     margin: 1vh 0;
 }
 
 /* Lose screen */
-#gameLost {
+.gameLost {
     position: absolute;
     z-index: 100;
     height: 640px;
@@ -101,19 +101,19 @@ canvas {
     display: none;
 }
 
-#loseText {
+.loseText {
     background: #fff;
     padding: 3vw;
     margin: 0 20vw;
     border-radius: 10px;
 }
 
-#loseText div button {
+.loseText div button {
     display: block;
     margin: 1vh 0;
 }
 /* Pause functions */
-#gamePaused {
+.gamePaused {
     position: absolute;
     z-index: 100;
     height: 640px;
@@ -123,14 +123,14 @@ canvas {
     display: none;
 }
 
-#pauseText {
+.pauseText {
     background: #fff;
     padding: 3vw;
     margin: 0 20vw;
     border-radius: 10px;
 }
 
-#pauseText div button {
+.pauseText div button {
     display: block;
     margin: 1vh 0;
 }

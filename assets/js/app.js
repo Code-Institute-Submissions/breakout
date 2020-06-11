@@ -11,13 +11,13 @@ let gameLost = false;
 function gameOver() {
     if(lives <= 0) {
         gameLost = true;
-        document.getElementById("gameLost").style.display = "block";
-        document.getElementById("loseScore").innerHTML = `Score: ${score}`;
+        document.getElementsByClassName("gameLost")[0].style.display = "block";
+        document.getElementsByClassName("loseScore")[0].innerHTML = `Score: ${score}`;
     }
 }
 
 function youWin() {
-    document.getElementById("gameWon").style.display = "block";
+    document.getElementsByClassName("gameWon")[0].style.display = "block";
     document.getElementsByClassName("winScore")[0].innerHTML = `Score: ${score}`;
     ball.dx = 0;
     ball.dy = 0;
@@ -242,10 +242,10 @@ function statsDraw() {
 function pausePlay() {
     if(!paused) {
         paused = true;
-        document.getElementById("gamePaused").style.display = "block";
+        document.getElementsByClassName("gamePaused")[0].style.display = "block";
     } else if(paused) {
         paused = false;
-        document.getElementById("gamePaused").style.display = "none";
+        document.getElementsByClassName("gamePaused")[0].style.display = "none";
     }
 }
 
