@@ -27,8 +27,8 @@ var paddle = {
 // ----------- The ball ------------- //
 const ballRadius = 10;
 var ball = {
-    xPosition: 1, //The 1's  are here simply to be overwritten
-    yPosition: 1 - ballRadius,
+    xPosition: canvas.width/2,
+    yPosition: paddle.yPosition - ballRadius,
     radius: ballRadius,
     speed: 6,
     dx: 5,
