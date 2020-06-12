@@ -2,6 +2,13 @@
 const canvas = document.getElementById("levelOneCanvas");
 const ctx = canvas.getContext("2d");
 
+// Fetching the screen size and adjusting the canvas accordingly
+const userScreenWidth = screen.width;
+const userScreenHeight = screen.height;
+
+document.getElementsByTagName("canvas")[0].width = userScreenWidth;
+document.getElementsByTagName("canvas")[0].height = userScreenHeight - (userScreenHeight * 0.165);
+
 // ------- Levels ---------//
 let level = 1;
 let maxLevel = 1;
@@ -10,18 +17,34 @@ let maxLevel = 1;
 var brick = {
     row: 3,
     column: 3,
-    width: 260,
-    height: 15,
-    offsetLeft: 45,
-    offsetTop: 20,
+    width: (userScreenWidth / 3) - (userScreenWidth / 25),
+    height: (userScreenHeight / 45),
+    offsetLeft: (userScreenWidth / 34.5),
+    offsetTop: (userScreenHeight / 40),
     marginTop: 40,
     borderColor: "white",
     fillColor: "white"
 }
 
 // ------------- Creating the paddle object -------------- //
-const paddleWidth = 120;
-const paddleHeight = 15;
+function findWidthOfPaddle(screen, divide) {
+    if(userScreenWidth < 600) {
+        return (screen / divide);
+    } else {
+        return (screen / (divide * 2));
+    }
+}
+
+function findHeightOfPaddle(screen, divide) {
+    if(userScreenHeight > userScreenWidth) {
+        return (screen / (divide * 1.05));
+    } else if (userScreenHeight < userScreenWidth) {
+        return (screen / divide)
+    }
+}
+
+const paddleWidth = findWidthOfPaddle(userScreenWidth, 5)
+const paddleHeight = findHeightOfPaddle(userScreenHeight, 45);
 const paddleMarginBottom = 30;
 
 const paddle = {

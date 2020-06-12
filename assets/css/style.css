@@ -68,7 +68,7 @@ button {
 /*---------------------------------- Game pages */
 
 canvas {
-  margin: 0 75px;
+  margin: 0;
 }
 
 
@@ -78,7 +78,6 @@ canvas {
 /* Game win */
 
 .gameScreen {
-  padding-top: 5vh;
   position: relative;
 }
 
@@ -88,7 +87,7 @@ canvas {
   height: 100vh;
   width: 100vw;
   background: rgba(255, 255, 255, 0.3);
-  margin: 0 75px;
+  margin: 0;
   display: none;
 }
 
@@ -113,7 +112,7 @@ canvas {
   height: 640px;
   width: 960px;
   background: rgba(0, 0, 0, 0.3);
-  margin: 0 75px;
+  margin: 0;
   display: none;
 }
 
@@ -138,7 +137,7 @@ canvas {
   height: 640px;
   width: 960px;
   background: rgba(255, 255, 255, 0.3);
-  margin: 0 75px;
+  margin: 0;
   display: none;
 }
 
