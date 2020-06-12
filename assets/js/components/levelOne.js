@@ -13,38 +13,52 @@ document.getElementsByTagName("canvas")[0].height = userScreenHeight - (userScre
 let level = 1;
 let maxLevel = 1;
 
+// Functions for responsiveness //
+/*
+    The following functions are for finding height and width of objects based on the screen size 
+*/
+function findHeightOfPills(screen, divide) {
+    if(canvas.height > canvas.width) {
+        return (screen / (divide * 0.9));
+    } else if (canvas.height < canvas.width) {
+        return (screen / divide)
+    }
+}
+
 // ----- creating the brick object ----- //
+function findTopMarginOfBrick(screen, divide) {
+    if(canvas.height > canvas.width) {
+        return (screen / (divide * 0.8));
+    } else if (canvas.height < canvas.width) {
+        return (screen / divide)
+    }
+}
+
 var brick = {
     row: 3,
     column: 3,
-    width: (userScreenWidth / 3) - (userScreenWidth / 25),
-    height: (userScreenHeight / 45),
-    offsetLeft: (userScreenWidth / 34.5),
-    offsetTop: (userScreenHeight / 40),
-    marginTop: 40,
+    width: (canvas.width / 3) - (canvas.width / 25),
+    height: findHeightOfPills(canvas.height, 45),
+    offsetLeft: (canvas.width / 34.5),
+    offsetTop: (canvas.height / 40),
+    marginTop: findTopMarginOfBrick(canvas.height, 15),
     borderColor: "white",
     fillColor: "white"
 }
 
 // ------------- Creating the paddle object -------------- //
 function findWidthOfPaddle(screen, divide) {
-    if(userScreenWidth < 600) {
+    if(canvas.width < canvas.height) {
         return (screen / divide);
-    } else {
+    } else if(canvas.width > canvas.height) {
         return (screen / (divide * 2));
     }
 }
 
-function findHeightOfPaddle(screen, divide) {
-    if(userScreenHeight > userScreenWidth) {
-        return (screen / (divide * 1.05));
-    } else if (userScreenHeight < userScreenWidth) {
-        return (screen / divide)
-    }
-}
 
-const paddleWidth = findWidthOfPaddle(userScreenWidth, 5)
-const paddleHeight = findHeightOfPaddle(userScreenHeight, 45);
+
+const paddleWidth = findWidthOfPaddle(canvas.width, 5)
+const paddleHeight = findHeightOfPills(canvas.height, 45);
 const paddleMarginBottom = 30;
 
 const paddle = {
