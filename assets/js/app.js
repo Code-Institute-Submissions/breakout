@@ -8,11 +8,6 @@ let paused = false;
 let gameLost = false;
 
 
-// calling all the neccesary functions for the game to start //
-bricksCreate();
-
-game();
-
 // Game over functions //
 function gameOver() {
     if(lives <= 0) {
@@ -74,20 +69,6 @@ function roundRect(xPosition, yPosition, width, height, rounding, color, borderC
 }
 
 // ------ Paddle -------- //
-const paddleWidth = 120;
-const paddleHeight = 15;
-const paddleMarginBottom = 30;
-
-const paddle = {
-    xPosition: canvas.width/2 - paddleWidth/2,
-    yPosition: canvas.height - paddleHeight - paddleMarginBottom,
-    width: paddleWidth,
-    height: paddleHeight,
-    dx: 10,
-    color: "black",
-    borderColor: "black"
-}
-
 function paddleDraw() {
     //ctx.fillStyle = "black";
     //ctx.fillRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height);
@@ -122,6 +103,11 @@ function paddleMove(){
 }
 
 // ------------------------- The ball ------------------------- //
+// Overwriting the x and y position of the ball
+//ball.xPosition = canvas.width/2;
+//ball.yPosition = paddle.yPosition - ballRadius;
+
+
 function ballDraw() {
     ctx.beginPath();
 
@@ -164,7 +150,7 @@ function bricksCreate() {
     }
 }
 
-
+bricksCreate();
 
 function bricksDraw() {
     for(let r = 0; r < brick.row; r++) {
@@ -298,3 +284,5 @@ function game() {
         requestAnimationFrame(game);
     }   
 }
+
+game();

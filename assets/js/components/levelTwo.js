@@ -18,11 +18,26 @@ var brick = {
     fillColor: "white"
 }
 
+// ------------- Creating the paddle object -------------- //
+const paddleWidth = 120;
+const paddleHeight = 15;
+const paddleMarginBottom = 30;
+
+const paddle = {
+    xPosition: canvas.width/2 - paddleWidth/2,
+    yPosition: canvas.height - paddleHeight - paddleMarginBottom,
+    width: paddleWidth,
+    height: paddleHeight,
+    dx: 10,
+    color: "black",
+    borderColor: "black"
+}
+
 // ----------- The ball ------------- //
 const ballRadius = 10;
 var ball = {
-    xPosition: 1, //The 1's  are here simply to be overwritten
-    yPosition: 1 - ballRadius,
+    xPosition: canvas.width/2,
+    yPosition: paddle.yPosition - ballRadius,
     radius: ballRadius,
     speed: 7,
     dx: 5.5,
