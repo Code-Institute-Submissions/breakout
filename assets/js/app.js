@@ -7,6 +7,12 @@ let rightArrow = false;
 let paused = false;
 let gameLost = false;
 
+
+// calling all the neccesary functions for the game to start //
+bricksCreate();
+
+game();
+
 // Game over functions //
 function gameOver() {
     if(lives <= 0) {
@@ -116,11 +122,6 @@ function paddleMove(){
 }
 
 // ------------------------- The ball ------------------------- //
-// Overwriting the x and y position of the ball
-ball.xPosition = canvas.width/2;
-ball.yPosition = paddle.yPosition - ballRadius;
-
-
 function ballDraw() {
     ctx.beginPath();
 
@@ -144,6 +145,10 @@ function resetBall(){
 }
 
 // ---------------- Bricks -------------------- //
+/*
+    functions that create an array of a bricks, then draw the bricks on the canvas. 
+    The bricks with status = true show up, this is later used in collision detection to count your points. 
+*/
 let bricks = [];
 
 function bricksCreate() {
@@ -159,7 +164,7 @@ function bricksCreate() {
     }
 }
 
-bricksCreate();
+
 
 function bricksDraw() {
     for(let r = 0; r < brick.row; r++) {
@@ -226,6 +231,9 @@ function ballCollision() {
     }
 }
 // ---------------- Score and Lives -------------------- //
+/*
+    The following function draws the info about levels, lives and score on the canvas 
+*/
 function gameStats(text, textX, textY) {
     ctx.fillStyle = "black";
     ctx.font = "25px Quicksand";
@@ -239,6 +247,9 @@ function statsDraw() {
 }
 
 // pause game //
+/*
+    The following section is the pauses the game and shows the pause modal
+*/
 function pausePlay() {
     if(!paused) {
         paused = true;
@@ -256,6 +267,7 @@ document.addEventListener("keydown", function(event) {
 });
 
 // ---------------- Initialising -------------------- //
+// This function draws all the shapes on the canvas //
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ballDraw();
@@ -264,6 +276,7 @@ function draw() {
     statsDraw();
 }
 
+// This function updates the canvas and makes the ball and paddle able to move //
 function update() {
     paddleMove();
     ballMove();
@@ -273,7 +286,7 @@ function update() {
     levelUp();
 
 }
-
+// The function that runs the game //
 function game() {
     draw();
     if(!paused) {
@@ -284,6 +297,4 @@ function game() {
     if(!gameLost) {
         requestAnimationFrame(game);
     }   
-} 
-
-game();
+}
