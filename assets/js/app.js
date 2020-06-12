@@ -2,14 +2,14 @@
 var lives = 3;
 let score = 0;
 var scoreUnit = 1 * lives;
-let leftArrow = false;
-let rightArrow = false;
-let paused = false;
+let isLeftArrowPressed = false;
+let isRightArrowPressed = false;
+let isGamePaused = false;
 let gameLost = false;
 
 
 // Game over functions //
-function gameOver() {
+function isGameOver() {
     if(lives <= 0) {
         gameLost = true;
         document.getElementsByClassName("gameLost")[0].style.display = "block";
@@ -17,7 +17,7 @@ function gameOver() {
     }
 }
 
-function youWin() {
+function didPlayerWin() {
     document.getElementsByClassName("gameWon")[0].style.display = "block";
     document.getElementsByClassName("winScore")[0].innerHTML = `Score: ${score}`;
     ball.dx = 0;
@@ -33,12 +33,12 @@ function levelUp() {
     }
     if(levelDone) {
         if(level >= maxLevel) {
-            youWin();
+            didPlayerWin();
             gameOver = true;
             return;
         }
         brick.row++;
-        bricksCreate();
+        createBricks();
         ball.speed += 0.5;
         resetBall();
         level++;
@@ -47,7 +47,7 @@ function levelUp() {
 
 // --------- Rounded rectangle function --------- //
 // This section got a lot from from the guide at https://newfivefour.com/javascript-canvas-rounded-rectangle.html //
-function roundRect(xPosition, yPosition, width, height, rounding, color, borderColor) {
+function renderRoundedPill(xPosition, yPosition, width, height, rounding, color, borderColor) {
     const halfRadians = (2 * Math.PI)/2
     const quarterRadians = (2 * Math.PI)/4
 
@@ -68,57 +68,53 @@ function roundRect(xPosition, yPosition, width, height, rounding, color, borderC
     ctx.fill(); 
 }
 
-// ------ Paddle -------- //
-function paddleDraw() {
-    //ctx.fillStyle = "black";
-    //ctx.fillRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height);
+// ------ Paddle -------- //s
+function drawPaddle() {
     ctx.beginPath();
-    roundRect(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height, 7, paddle.color, paddle.borderColor);
+    renderRoundedPill(paddle.xPosition, paddle.yPosition, paddle.width, paddle.height, 7, paddle.color, paddle.borderColor);
     ctx.stroke();
 }
 
 // paddle movement //
 document.addEventListener("keydown", function(event) {
     if(event.keyCode == 37){
-        leftArrow = true;
+        isLeftArrowPressed = true;
     } else if(event.keyCode == 39){
-        rightArrow = true; 
+        isRightArrowPressed = true; 
     }
 });
 
 document.addEventListener("keyup", function(event) {
     if(event.keyCode == 37){
-        leftArrow = false;
+        isLeftArrowPressed = false;
     } else if(event.keyCode == 39){
-        rightArrow = false; 
+        isRightArrowPressed = false; 
     }
 });
 
-function paddleMove(){
-    if(rightArrow && paddle.xPosition + paddle.width < canvas.width) {
+function movePaddle(){
+    if(isRightArrowPressed && paddle.xPosition + paddle.width < canvas.width) {
         paddle.xPosition += paddle.dx;
-    } else if(leftArrow && paddle.xPosition > 0){
+    } else if(isLeftArrowPressed && paddle.xPosition > 0){
         paddle.xPosition -= paddle.dx;
     }
 }
 
 // ------------------------- The ball ------------------------- //
 // Overwriting the x and y position of the ball
-//ball.xPosition = canvas.width/2;
-//ball.yPosition = paddle.yPosition - ballRadius;
-
-
-function ballDraw() {
+function drawBall() {
     ctx.beginPath();
 
     ctx.arc(ball.xPosition, ball.yPosition, ball.radius, 0, Math.PI*2);
-    ctx.fillStyle = "black";
+    ctx.strokeStyle = ball.border;
+    ctx.stroke();
+    ctx.fillStyle = ball.color;
     ctx.fill();
 
     ctx.closePath();
 }
 
-function ballMove() {
+function moveBall() {
     ball.xPosition += ball.dx;
     ball.yPosition += ball.dy;
 }
@@ -137,7 +133,7 @@ function resetBall(){
 */
 let bricks = [];
 
-function bricksCreate() {
+function createBricks() {
     for(let r = 0; r < brick.row; r++) {
         bricks[r] = [];
         for(let c = 0; c < brick.column; c++) {
@@ -150,15 +146,15 @@ function bricksCreate() {
     }
 }
 
-bricksCreate();
+createBricks();
 
-function bricksDraw() {
+function drawBricks() {
     for(let r = 0; r < brick.row; r++) {
         for(let c = 0; c < brick.column; c++) {
             let b = bricks[r][c];
             if(b.status) {
                 ctx.beginPath();
-                roundRect(b.x, b.y, brick.width, brick.height, 7, brick.fillColor, brick.borderColor);
+                renderRoundedPill(b.x, b.y, brick.width, brick.height, 7, brick.fillColor, brick.borderColor);
                 ctx.stroke();
             }
         }
@@ -183,7 +179,7 @@ function wallCollision() {
     }
 
     if(lives == 0) {
-        gameOver();
+        isGameOver();
     }
 }
 
@@ -226,7 +222,7 @@ function gameStats(text, textX, textY) {
     ctx.fillText(text, textX, textY);
 }
 
-function statsDraw() {
+function drawStats() {
     gameStats("Score: " + score, 35, 35);
     gameStats("Lives: " + lives, canvas.width - 135, 35);
     gameStats("Level: " + level, canvas.width/2 - 45, 35);
@@ -238,10 +234,10 @@ function statsDraw() {
 */
 function pausePlay() {
     if(!paused) {
-        paused = true;
+        isGamePaused = true;
         document.getElementsByClassName("gamePaused")[0].style.display = "block";
     } else if(paused) {
-        paused = false;
+        isGamePaused = false;
         document.getElementsByClassName("gamePaused")[0].style.display = "none";
     }
 }
@@ -256,16 +252,16 @@ document.addEventListener("keydown", function(event) {
 // This function draws all the shapes on the canvas //
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ballDraw();
-    paddleDraw();
-    bricksDraw();
-    statsDraw();
+    drawBall();
+    drawPaddle();
+    drawBricks();
+    drawStats();
 }
 
 // This function updates the canvas and makes the ball and paddle able to move //
 function update() {
-    paddleMove();
-    ballMove();
+    movePaddle();
+    moveBall();
     wallCollision();
     paddleCollision();
     ballCollision();

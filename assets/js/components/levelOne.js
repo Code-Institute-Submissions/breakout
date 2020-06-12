@@ -42,5 +42,7 @@ var ball = {
     radius: ballRadius,
     speed: 6,
     dx: 5,
-    dy: -5
+    dy: -5,
+    color: "black",
+    border: "black"
 }
