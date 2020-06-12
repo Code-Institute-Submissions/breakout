@@ -233,10 +233,10 @@ function drawStats() {
     The following section is the pauses the game and shows the pause modal
 */
 function pausePlay() {
-    if(!paused) {
+    if(!isGamePaused) {
         isGamePaused = true;
         document.getElementsByClassName("gamePaused")[0].style.display = "block";
-    } else if(paused) {
+    } else if(isGamePaused) {
         isGamePaused = false;
         document.getElementsByClassName("gamePaused")[0].style.display = "none";
     }
@@ -271,7 +271,7 @@ function update() {
 // The function that runs the game //
 function game() {
     draw();
-    if(!paused) {
+    if(!isGamePaused) {
         update();
     }
     
