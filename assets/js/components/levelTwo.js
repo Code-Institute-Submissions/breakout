@@ -29,8 +29,8 @@ const paddle = {
     width: paddleWidth,
     height: paddleHeight,
     dx: 10,
-    color: "black",
-    borderColor: "black"
+    color: "white",
+    borderColor: "white"
 }
 
 // ----------- The ball ------------- //

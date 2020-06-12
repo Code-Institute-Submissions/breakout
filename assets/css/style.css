@@ -170,7 +170,7 @@ canvas {
 .backgroundLevelTwo {
   background-image: url("../img/levelTwoBg.jpg");
   background-size: 100%;
-  background-position-y: 20%;
+  background-position-y: 30%;
   display: block;
 }
 
