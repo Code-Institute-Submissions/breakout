@@ -3,12 +3,20 @@ const canvas = document.getElementById("levelTwoCanvas");
 const ctx = canvas.getContext("2d");
 
 // Fetching the screen size and adjusting the canvas accordingly
-const userScreenWidth = screen.width;
-const userScreenHeight = screen.height;
-//const virtualButtonsHeight = userScreenHeight - canvas.height;
+const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
-document.getElementsByTagName("canvas")[0].width = userScreenWidth;
-document.getElementsByTagName("canvas")[0].height = userScreenHeight - (userScreenHeight * 0.165);
+const virtualButtonsHeight = viewportHeight * 0.2;
+
+function findCanvasHeight(height, width) {
+    if(height > width) {
+        return (height - virtualButtonsHeight);
+    } else if(height < width) {
+        return height;
+    }
+}
+document.getElementsByTagName("canvas")[0].width = viewportWidth;
+document.getElementsByTagName("canvas")[0].height = findCanvasHeight(viewportHeight, viewportWidth);
 
 
 // ------- Levels ---------//
