@@ -24,10 +24,16 @@ button {
 }
 
 .container {
-    overflow: hidden;
     margin: 0;
     padding: 0;
 }
+
+@media screen and (max-aspect-ratio: 1/1) {
+    .container {
+        overflow: hidden;
+    }
+}
+
 
 
 /*---------------------------------- Index page */
@@ -187,11 +193,18 @@ canvas {
     display: inline;
     height: 15vh;
     background: none;
+    display: none;
 }
 
 .movementButtons i {
     font-size: 4rem;
     color: rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    .movementButtons {
+        display: inline-block
+    }
 }
 
 /* ------------------------- Level 1 -------------------- */
