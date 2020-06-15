@@ -226,22 +226,6 @@ function ballCollision() {
         }
     }
 }
-// ---------------- Score and Lives -------------------- //
-/*
-    The following function draws the info about levels, lives and score on the canvas 
-
-function gameStats(text, textX, textY) {
-    ctx.fillStyle = "black";
-    ctx.font = "25px Quicksand";
-    ctx.fillText(text, textX, textY);
-}
-
-function drawStats() {
-    gameStats("Score: " + score, 35, 35);
-    gameStats("Lives: " + lives, canvas.width - 135, 35);
-    gameStats("Level: " + level, canvas.width/2 - 45, 35);
-}
-*/
 
 // pause game //
 /*

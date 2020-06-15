@@ -233,6 +233,14 @@ canvas {
   display: block;
 }
 
+@media screen and (max-aspect-ratio: 1/1) {
+    .backgroundLevelTwo {
+        background-position: center;
+        background-size: cover;
+        background-repeat: none;
+    }
+}
+
 
 /* ------------------------- Level 3 -------------------- */
 
