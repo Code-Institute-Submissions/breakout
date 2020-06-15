@@ -92,6 +92,20 @@ document.addEventListener("keyup", function(event) {
     }
 });
 
+// Movement functions for the virtual buttons //
+function isVirtualLeftButtonPressed() {
+    isLeftArrowPressed = true 
+}
+
+function isVirtualRightButtonPressed() {
+    isRightArrowPressed = true 
+}
+
+function stopMovement() {
+    isLeftArrowPressed = false;
+    isRightArrowPressed = false;
+}
+
 function movePaddle(){
     if(isRightArrowPressed && paddle.xPosition + paddle.width < canvas.width) {
         paddle.xPosition += paddle.dx;
