@@ -23,13 +23,13 @@ button {
   font-family: 'Quicksand', sans-serif;
 }
 
-.container {
+.wrapper {
     margin: 0;
     padding: 0;
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
-    .container {
+    .wrapper {
         overflow: hidden;
     }
 }
