@@ -102,8 +102,6 @@ canvas {
 
 
 /* -------------------- Game win and lose ---------------------- */
-
-
 /* Game win */
 
 .gameScreen {
@@ -191,7 +189,7 @@ canvas {
     width: 49vw;
     border: none;
     display: inline;
-    height: 15vh;
+    height: 20vh;
     background: none;
     display: none;
 }

@@ -6,10 +6,17 @@ const ctx = canvas.getContext("2d");
 const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
-//const virtualButtonsHeight = userScreenHeight - canvas.height;
+const virtualButtonsHeight = viewportHeight * 0.2;
 
+function findCanvasHeight(height, width) {
+    if(height > width) {
+        return (height - virtualButtonsHeight);
+    } else if(height < width) {
+        return height;
+    }
+}
 document.getElementsByTagName("canvas")[0].width = viewportWidth;
-document.getElementsByTagName("canvas")[0].height = viewportHeight;
+document.getElementsByTagName("canvas")[0].height = findCanvasHeight(viewportHeight, viewportWidth);
 
 
 // ------- Levels ---------//
