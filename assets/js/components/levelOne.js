@@ -5,9 +5,11 @@ const ctx = canvas.getContext("2d");
 // Fetching the screen size and adjusting the canvas accordingly
 const userScreenWidth = screen.width;
 const userScreenHeight = screen.height;
+//const virtualButtonsHeight = userScreenHeight - canvas.height;
 
 document.getElementsByTagName("canvas")[0].width = userScreenWidth;
 document.getElementsByTagName("canvas")[0].height = userScreenHeight - (userScreenHeight * 0.165);
+
 
 // ------- Levels ---------//
 let level = 1;
@@ -83,3 +85,21 @@ var ball = {
     color: "black",
     border: "black"
 }
+
+// ------------ Font color ------------ //
+function gameStats(text, textX, textY) {
+    ctx.fillStyle = "white";
+    ctx.font = "25px Quicksand";
+    ctx.fillText(text, textX, textY);
+}
+
+function drawStats() {
+    gameStats("Score: " + score, 35, 35);
+    gameStats("Lives: " + lives, canvas.width - 135, 35);
+    gameStats("Level: " + level, canvas.width/2 - 45, 35);
+}
+/*
+for(var i = 0; i < document.getElementsByClassName("movementButtons").length; i++) {
+    document.getElementsByClassName("movementButtons")[i].style.height = `${virtualButtonsHeight}px`;
+}
+*/
