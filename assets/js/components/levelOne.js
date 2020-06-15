@@ -86,7 +86,10 @@ var ball = {
     border: "black"
 }
 
-// ------------ Font color ------------ //
+// ---------------- Score and Lives -------------------- //
+/*
+    The following function draws the info about levels, lives and score on the canvas 
+*/
 function gameStats(text, textX, textY) {
     ctx.fillStyle = "white";
     ctx.font = "25px Quicksand";
