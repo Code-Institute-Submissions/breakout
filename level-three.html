@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Level Three | dayBreaker</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+    <div class="wrapper">
+        <section>
+            <div class="gameScreen">
+                <div class="gameWon">
+                    <div class="row">
+                        <div class="col mt-5 text-center winText">
+                            <h1><i class="fas fa-trophy"></i></h1>
+                            <h1>Game Won!</h1>
+                            <p class="winScore">Score: </p>
+                            <div class="mt-5">
+                                <!--<a href="levelTwo.html" class="btn btn-info w-100">Next Level</a>-->
+                                <button class="btn btn-success w-100" onclick="window.location.reload();">Play again</button>
+                                <a href="index.html" class="btn btn-info w-100">Main Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gameLost">
+                    <div class="row">
+                        <div class="col mt-5 text-center loseText">
+                            <h1><i class="fas fa-heart-broken"></i></h1>
+                            <h1>You lost</h1>
+                            <p class="loseScore">Score: </p>
+                            <div class="mt-5">
+                                <button class="btn btn-success w-100" onclick="window.location.reload();">Play again</button>
+                                <a href="index.html" class="btn btn-info w-100">Main Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gamePaused">
+                    <div class="row">
+                        <div class="col mt-5 text-center pauseText">
+                            <h1><i class="fas fa-pause"></i></h1>
+                            <h1>Game paused</h1>
+                            <div class="mt-5">
+                                <button class="btn btn-success w-100" onclick="window.location.reload();">Play again</button>
+                                <a href="index.html" class="btn btn-info w-100">Main Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <canvas id="levelThreeCanvas" class="backgroundLevelThree"></canvas>
+                <div>
+                    <button class="leftButtonVirtual movementButtons"><i class="fas fa-chevron-circle-left"></i></button>
+                    <button class="rightButtonVirtual movementButtons"><i class="fas fa-chevron-circle-right"></i></button>
+                </div>
+            </div>
+            
+        </section>
+        
+    </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+        <script src="assets/js/components/levelThree.js"></script>
+        <script src="assets/js/app.js"></script>
+    </body>
+</html>
