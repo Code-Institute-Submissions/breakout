@@ -2,26 +2,72 @@
 const canvas = document.getElementById("levelThreeCanvas");
 const ctx = canvas.getContext("2d");
 
+// Fetching the screen size and adjusting the canvas accordingly
+const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+const virtualButtonsHeight = viewportHeight * 0.2;
+
+function findCanvasHeight(height, width) {
+    if(height > width) {
+        return (height - virtualButtonsHeight);
+    } else if(height < width) {
+        return height;
+    }
+}
+document.getElementsByTagName("canvas")[0].width = viewportWidth;
+document.getElementsByTagName("canvas")[0].height = findCanvasHeight(viewportHeight, viewportWidth);
+
 // ------- Levels ---------//
 let level = 3;
 let maxLevel = 3;
 
+// Functions for responsiveness //
+/*
+    The following functions are for finding height and width of objects based on the screen size 
+*/
+function findHeightOfPills(screen, divide) {
+    if(canvas.height > canvas.width) {
+        return (screen / (divide * 0.9));
+    } else if (canvas.height < canvas.width) {
+        return (screen / divide)
+    }
+}
+
+// ----- creating the brick object ----- //
+function findTopMarginOfBrick(screen, divide) {
+    if(canvas.height > canvas.width) {
+        return (screen / (divide * 0.8));
+    } else if (canvas.height < canvas.width) {
+        return (screen / divide)
+    }
+}
 // ----- Bricks ----- //
 var brick = {
     row: 4,
     column: 6,
-    width: 130,
-    height: 15,
-    offsetLeft: 23,
-    offsetTop: 20,
-    marginTop: 40,
+    width: (canvas.width / 6) - (canvas.width / 30),
+    height: findHeightOfPills(canvas.height, 45),
+    offsetLeft: (canvas.width / 34.5),
+    offsetTop: (canvas.height / 40),
+    marginTop: findTopMarginOfBrick(canvas.height, 15),
     borderColor: "white",
     fillColor: "white"
 }
 
 // ------------- Creating the paddle object -------------- //
-const paddleWidth = 120;
-const paddleHeight = 15;
+function findWidthOfPaddle(screen, divide) {
+    if(canvas.width < canvas.height) {
+        return (screen / divide);
+    } else if(canvas.width > canvas.height) {
+        return (screen / (divide * 2));
+    }
+}
+
+
+
+const paddleWidth = findWidthOfPaddle(canvas.width, 5)
+const paddleHeight = findHeightOfPills(canvas.height, 45);
 const paddleMarginBottom = 30;
 
 const paddle = {
@@ -34,7 +80,7 @@ const paddle = {
     borderColor: "black"
 }
 
-// ----------- The ball ------------- //
+// ----------- Creating the ball object ------------- //
 const ballRadius = 10;
 var ball = {
     xPosition: canvas.width/2,
@@ -46,6 +92,27 @@ var ball = {
     color: "black",
     border: "black"
 }
+
+// ---------------- Score and Lives -------------------- //
+/*
+    The following function draws the info about levels, lives and score on the canvas 
+*/
+function gameStats(text, textX, textY) {
+    ctx.fillStyle = "white";
+    ctx.font = "25px Quicksand";
+    ctx.fillText(text, textX, textY);
+}
+
+function drawStats() {
+    gameStats("Score: " + score, 35, 35);
+    gameStats("Lives: " + lives, canvas.width - 135, 35);
+    gameStats("Level: " + level, canvas.width/2 - 45, 35);
+}
+/*
+for(var i = 0; i < document.getElementsByClassName("movementButtons").length; i++) {
+    document.getElementsByClassName("movementButtons")[i].style.height = `${virtualButtonsHeight}px`;
+}
+*/
 
 //A function for moving a row of bricks in to the right by 50px
 //for(var i = 0; i < bricks[0].length; i++) {

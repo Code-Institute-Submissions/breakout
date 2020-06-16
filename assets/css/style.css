@@ -26,12 +26,7 @@ button {
 .wrapper {
     margin: 0;
     padding: 0;
-}
-
-@media screen and (max-aspect-ratio: 1/1) {
-    .wrapper {
-        overflow: hidden;
-    }
+    overflow: hidden;
 }
 
 
@@ -293,4 +288,5 @@ canvas {
 
 .backgroundLevelThree {
   background: grey;
+  display: block;
 }
