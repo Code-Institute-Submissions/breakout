@@ -287,6 +287,17 @@ canvas {
 /* ------------------------- Level 3 -------------------- */
 
 .backgroundLevelThree {
-  background: grey;
+  background-image: url("../img/levelThreeBg.jpg");
+  background-position-y: 30%;
   display: block;
+  background-size: cover;
+  background-repeat: none;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    .backgroundLevelThree {
+        background-position: center;
+        background-size: cover;
+        background-repeat: none;
+    }
 }
