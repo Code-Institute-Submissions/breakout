@@ -1,5 +1,5 @@
 // Setting up the canvas //
-const canvas = document.getElementById('levelOneCanvas');
+const canvas = document.getElementById('levelThreeCanvas');
 const ctx = canvas.getContext('2d');
 
 // Fetching the viewport size and adjusting the canvas accordingly
