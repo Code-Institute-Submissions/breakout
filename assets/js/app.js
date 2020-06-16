@@ -205,10 +205,10 @@ function wallCollision() {
 }
 
 function paddleCollision() {
-  if (ball.yPosition > paddle.yPosition && ball.yPosition < paddle.yPosition
-    + paddle.height
-    && ball.xPosition > paddle.xPosition && ball.xPosition < paddle.xPosition
-    + paddle.width) {
+  if (ball.yPosition > paddle.yPosition && ball.yPosition < 
+    paddle.yPosition + paddle.height && 
+      ball.xPosition > paddle.xPosition && 
+      ball.xPosition < paddle.xPosition + paddle.width) {
     let collidePoint = ball.xPosition - (paddle.xPosition + paddle.width / 2);
     collidePoint /= (paddle.width / 2);
 
@@ -224,10 +224,8 @@ function ballCollision() {
     for (let c = 0; c < brick.column; c += 1) {
       const b = bricks[r][c];
       if (b.status) {
-        if (ball.xPosition + ball.radius > b.x && ball.xPosition - ball.radius
-          < b.x + brick.width
-          && ball.yPosition + ball.radius > b.y && ball.yPosition - ball.radius < b
-          .y + brick.height) {
+        if (ball.xPosition + ball.radius > b.x && ball.xPosition - ball.radius < b.x + brick.width && 
+          ball.yPosition + ball.radius > b.y && ball.yPosition - ball.radius < b.y + brick.height) {
           b.status = false;
           ball.dy = -ball.dy;
           score += scoreUnit;
