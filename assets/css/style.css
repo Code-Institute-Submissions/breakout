@@ -93,6 +93,55 @@ button {
   color: #fafafa;
 }
 
+/* How-to-play modal*/
+#tutorialPaddle {
+    width: 20vw;
+    height: 3vh;
+    background: black;
+    border-radius: 5px;
+    animation: movingPaddle 3s infinite;
+}
+
+@media screen and (min-aspect-ratio: 1/1) {
+    #tutorialPaddle {
+        width: 20%;
+    }
+}
+
+#tutorialArrows {
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+#tutorialArrows #rightTutorialArrow {
+    animation: shiftingArrows 3s infinite ease-out;
+    animation-delay: 1.5s;
+}
+
+#tutorialArrows #leftTutorialArrow {
+    animation: shiftingArrows 3s infinite;
+}
+
+@keyframes movingPaddle {
+    0%, 100% {
+        margin-left: 0vw;
+    }
+
+    50% {
+        margin-left: 80%;
+
+    }
+}
+
+@keyframes shiftingArrows {
+    0%, 100% {
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    50% {
+        color: rgba(0, 0, 0, 0.2);
+    }
+}
 
 /*---------------------------------- Game pages */
 
