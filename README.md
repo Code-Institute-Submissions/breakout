@@ -16,15 +16,25 @@ This game has two main views, the index page and the levels. There are currently
 
 ![Game desktop view](/assets/img/screenshots/gameDesktopView.png)
 
-![Index page mobile view](/assets/img/screenshots/gameDesktopView.png)
+![Index page mobile view](/assets/img/screenshots/indexMobileView.png)
 
-![Game mobile view](/assets/img/screenshots/gameDesktopView.png)
+![Game mobile view](/assets/img/screenshots/gameMobileView.png)
 
 ## Features
 
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
+
+There are two sections of this project that have quite separate features - The index page and the game, this section will be split in two to address their features. 
  
 ### Existing Features
+
+#### Index Page 
+
+- Main menu - Allows the user to navigate to the game and the tutorial of the game
+- Tutorial - a button on the main menu that opens a modal that has some short instructions and animations that explain how to play the game
+
+#### Game
+
 - Feature 1 - allows users X to achieve Y, by having them fill out Z
 - ...
 
