@@ -12,7 +12,13 @@ The project is based on two main user stories:
 
 This game has two main views, the index page and the levels. There are currently three different levels but the views are the same on all three. Screenshots of these two in mobile and desktop view are below. 
 
-![Index page desktop view](assets/img/screenshot/gameDesktopView.png)
+![Index page desktop view](/assets/img/screenshot/indexDesktopView.png)
+
+![Game desktop view](/assets/img/screenshot/gameDesktopView.png)
+
+![Index page mobile view](/assets/img/screenshot/gameDesktopView.png)
+
+![Game mobile view](/assets/img/screenshot/gameDesktopView.png)
 
 ## Features
 
