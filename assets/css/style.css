@@ -35,7 +35,7 @@ button {
 #menu {
   padding-top: 5vh;
   padding-bottom: 5vh;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
 }
 
@@ -226,6 +226,7 @@ canvas {
   margin: 1vh 0;
 }
 
+
 /* --------------------- Movement buttons --------------- */
 .movementButtons {
     margin: 0;
@@ -248,52 +249,32 @@ canvas {
     }
 }
 
-/* ------------------------- Level 1 -------------------- */
-
+/* ------------------------- Levels -------------------- */
 .backgroundLevelOne {
   background-image: url("../img/breakoutBgOne.jpg");
-  background-size: 100%;
   background-position-y: 80%;
-  display: block;
 }
-
-@media screen and (max-aspect-ratio: 1/1) {
-    .backgroundLevelOne {
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-}
-
-/* ------------------------- Level 2 -------------------- */
 
 .backgroundLevelTwo {
   background-image: url("../img/levelTwoBg.jpg");
-  background-size: 100%;
   background-position-y: 30%;
-  display: block;
 }
-
-@media screen and (max-aspect-ratio: 1/1) {
-    .backgroundLevelTwo {
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-}
-
-
-/* ------------------------- Level 3 -------------------- */
 
 .backgroundLevelThree {
   background-image: url("../img/levelThreeBg.jpg");
   background-position-y: 30%;
+}
+
+.backgroundLevelOne,
+.backgroundLevelTwo,
+.backgroundLevelThree {
+  background-size: 100%;
   display: block;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
+    .backgroundLevelOne,
+    .backgroundLevelTwo,
     .backgroundLevelThree {
         background-position: center;
         background-size: cover;
