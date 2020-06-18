@@ -3,6 +3,10 @@ const canvas = document.getElementById('levelOneCanvas');
 const ctx = canvas.getContext('2d');
 
 // Fetching the viewport size and adjusting the canvas accordingly
+/*
+    A big thanks to the users that had a great way of doing this in this thread on stackoverflow:
+    https://stackoverflow.com/questions/1248081/how-to-get-the-browser-viewport-dimensions
+*/
 const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window
   .innerWidth || 0);
 const viewportHeight = Math.max(document.documentElement.clientHeight || 0,
