@@ -33,7 +33,7 @@ There are two sections of this project that have quite separate features - The i
 
 - Main menu - Allows the user to navigate to the game and the tutorial of the game
 - Tutorial - A button on the main menu that opens a modal that has some short instructions and animations that explain how to play the game
-    - As the button is in font and center Emma sees this and can remind herself how to play, and then start the game
+    - As the button is in front and center Emma sees this and can remind herself how to play, and then start the game
 
 #### Game
 - Mobile and desktop responsive - this allows both Raymond and Sanna to play the game even though Raymond uses a Lenovo laptop and Sanna uses an iPhone 6
@@ -50,9 +50,6 @@ There are two sections of this project that have quite separate features - The i
 - Refactoring the JS - moving all the functions to app.js and reformatting the component files to a JSON format to make creating new levels easier 
 
 ## Technologies Used
-
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
-
 - [Bootstrap 4.5](https://getbootstrap.com/)
     - Bootstrap is used in this project mainly for the grid system and buttons to make the design process easier and faster
 
@@ -69,7 +66,7 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 This project has went through manual testing on all features and pages as well as code validators for all files. The code validators used for this project is w3's validators for HTML and CSS respectively, you can find them on https://validator.w3.org/ and https://jigsaw.w3.org/css-validator/ . All the JavaScript was validated using https://jshint.com/ .
 
-For the responsivity the Chrome developer tools were used, the process will is broken down below:
+For the responsivity the Chrome developer tools were used, the process is broken down below:
 1. Responsivity:
     1. Open the page you are currently testing
     2. Inspect the page by pressing ctrl + i or right clicking the page and selecting "Inspect"
@@ -85,10 +82,10 @@ Some issues that appeared in this testing were:
     - This issue was resolved by if statements in the component JavaScript files
 
 The manual testing of the game was simply playing it and trying all functions such as losing and winning every level. 
-The application was also put through as much pressure as possible by seeing the outmost limits of the hitbox of paddle, ball and bricks. The collions of the walls were tested as well though the same methods. Additionally the game were sent to other people who tested it in the same manner and sent feedback.
+The application was also put through as much pressure as possible by seeing the outmost limits of the hitbox of paddle, ball and bricks. The collisions of the walls were tested as well through the same methods. Additionally the game were sent to other people who tested it in the same manner and sent feedback.
 During this testing two main issues were detected:
-1. The hitbox of the paddle doesn't fully match the, the ball sinks into the paddle a bit before bouncing background
-2. In some occurences when the ball is bounces on the edge of the screen it can get stuck bouncing on the very edge of the canvas, it only goes away when you lose the game and the ball resets. 
+1. The hitbox of the paddle doesn't fully match the icon, the ball sinks into the paddle a bit before bouncing background
+2. In some occurences when the ball bounces on the paddle on edge of the screen it can get stuck bouncing on the very edge of the canvas, it only goes away when you lose the game and the ball resets. 
 These bugs are currently not fixed. 
 
 ## Deployment
