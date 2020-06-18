@@ -151,7 +151,8 @@ canvas {
   position: relative;
 }
 
-.gameWon {
+/* All the screens for winning, losing and pausing */
+.gamePaused, .gameWon, .gameLost {
   position: absolute;
   z-index: 100;
   height: 100vh;
@@ -162,66 +163,16 @@ canvas {
   overflow: hidden;
 }
 
-.winText {
+.pauseText, .loseText, .winText {
   background: #fff;
   padding: 3vw;
-  margin: 0 20vw;
+  margin: 10vh 20vw;
   border-radius: 10px;
 }
 
+.pauseText div button, 
+.loseText div button,
 .winText div button {
-  display: block;
-  margin: 1vh 0;
-}
-
-
-/* Lose screen */
-
-.gameLost {
-  position: absolute;
-  z-index: 100;
-  height: 100vh;
-  width: 100vw;
-  background: rgba(0, 0, 0, 0.3);
-  margin: 0;
-  display: none;
-  overflow: hidden;
-}
-
-.loseText {
-  background: #fff;
-  padding: 3vw;
-  margin: 0 20vw;
-  border-radius: 10px;
-}
-
-.loseText div button {
-  display: block;
-  margin: 1vh 0;
-}
-
-
-/* Pause functions */
-
-.gamePaused {
-  position: absolute;
-  z-index: 100;
-  height: 100vh;
-  width: 100vw;
-  background: rgba(255, 255, 255, 0.3);
-  margin: 0;
-  display: none;
-  overflow: hidden;
-}
-
-.pauseText {
-  background: #fff;
-  padding: 3vw;
-  margin: 0 20vw;
-  border-radius: 10px;
-}
-
-.pauseText div button {
   display: block;
   margin: 1vh 0;
 }
@@ -247,6 +198,10 @@ canvas {
     .movementButtons {
         display: inline-block
     }
+}
+
+button:focus {
+    outline: none;
 }
 
 /* ------------------------- Levels -------------------- */
