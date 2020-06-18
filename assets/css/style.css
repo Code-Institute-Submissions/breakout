@@ -50,7 +50,7 @@ button {
 }
 
 #heroImage {
-  background-image: url("../img/dayBreakerMainMenu.jpg");
+  background-image: url("../img/tinyDayBreakerMainMenu.jpg");
   height: 100vh;
   width: 100%;
   background-size: 100%;
@@ -222,17 +222,17 @@ button:focus {
 /* ------------------------- Levels -------------------- */
 /* The three following sets the backgrounds and background positions */
 .backgroundLevelOne {
-  background-image: url("../img/breakoutBgOne.jpg");
+  background-image: url("../img/tinyBreakoutBgOne.jpg");
   background-position-y: 80%;
 }
 
 .backgroundLevelTwo {
-  background-image: url("../img/levelTwoBg.jpg");
+  background-image: url("../img/tinyLevelTwoBg.jpg");
   background-position-y: 30%;
 }
 
 .backgroundLevelThree {
-  background-image: url("../img/levelThreeBg.jpg");
+  background-image: url("../img/tinyLevelThreeBg.jpg");
   background-position-y: 30%;
 }
 
