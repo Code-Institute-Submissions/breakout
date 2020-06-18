@@ -33,10 +33,6 @@ document.getElementsByTagName('canvas')[0].height = findCanvasHeight(
 );
 
 
-// ------- Levels ---------//
-const level = 1;
-const maxLevel = 1;
-
 // Functions for responsiveness //
 /*
     The following functions are for finding height and width of objects based on the screen size
@@ -128,6 +124,10 @@ function lifeCounterRightMargin() {
         return 10;
     }
 }
+
+// ------- Levels ---------//
+const level = 1;
+const maxLevel = 1;
 
 /*
     The following function draws the info about levels, lives and score on the canvas
