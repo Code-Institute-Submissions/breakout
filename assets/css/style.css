@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Quicksand&display=swap');
-
-/*---------------------------------- General Styles*/
+/* Importing the fonts */
+/*---------------------------------- General Styles -----------------------*/
 html {
   height: 100vh;
   position: relative;
@@ -23,6 +23,7 @@ button {
   font-family: 'Quicksand', sans-serif;
 }
 
+/* This wrapper help prvent overflow issues on mobile devices */
 .wrapper {
   margin: 0;
   padding: 0;
@@ -49,6 +50,7 @@ button {
   width: 10vw;
 }
 
+/* This is for the background image on the index page */
 #heroImage {
   background-image: url("../img/tinyDayBreakerMainMenu.jpg");
   height: 100vh;
@@ -128,7 +130,6 @@ button {
 
   50% {
     margin-left: 80%;
-
   }
 }
 
@@ -144,8 +145,7 @@ button {
   }
 }
 
-/*---------------------------------- Game pages */
-
+/*---------------------------------- Game pages -----------------*/
 canvas {
   margin: 0;
 }
@@ -190,7 +190,6 @@ canvas {
   display: block;
   margin: 1vh 0;
 }
-
 
 /* --------------------- Movement buttons --------------- */
 .movementButtons {
@@ -246,7 +245,6 @@ button:focus {
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
-
   .backgroundLevelOne,
   .backgroundLevelTwo,
   .backgroundLevelThree {
