@@ -29,7 +29,7 @@ function findCanvasHeight(height, width) {
 */
 document.getElementsByTagName('canvas')[0].width = viewportWidth;
 document.getElementsByTagName('canvas')[0].height = findCanvasHeight(
-  viewportHeight, viewportWidth,
+  viewportHeight, viewportWidth
 );
 
 
