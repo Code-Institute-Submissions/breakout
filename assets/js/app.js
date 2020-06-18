@@ -223,6 +223,7 @@ function paddleCollision() {
     const angle = collidePoint * (Math.PI / 3);
     ball.dx = ball.speed * Math.sin(angle);
     ball.dy = -ball.speed * Math.cos(angle);
+    // this math in this collision was taken from the tutorial by Code Explained in this video https://www.youtube.com/watch?v=FyZ4_T0GZ1U
   }
 }
 
