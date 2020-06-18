@@ -67,44 +67,48 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 ## Testing
 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+This project has went through manual testing on all features and pages as well as code validators for all files. The code validators used for this project is w3's validators for HTML and CSS respectively, you can find them on https://validator.w3.org/ and https://jigsaw.w3.org/css-validator/ . All the JavaScript was validated using https://jshint.com/ .
 
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
+For the responsivity the Chrome developer tools were used, the process will is broken down below:
+1. Responsivity:
+    1. Open the page you are currently testing
+    2. Inspect the page by pressing ctrl + i or right clicking the page and selecting "Inspect"
+    3. Change from larger devices and try to open all features (for example How to play on the index page)
+    4. Note any issues that appear 
+    5. Review the code and make improvements 
+    6. Start over from step 3 until you have reached the smallest screen possible
 
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
+Some issues that appeared in this testing were: 
+1. The animated paddle on the How to play modal was more larger than the modal itself on desktop and moved all the way out of the right of the screen
+    - This was fixed with media queries
+2. The paddle on mobile devices was more than half of the width of the canvas
+    - This issue was resolved by if statements in the component JavaScript files
 
-1. Contact form:
-    1. Go to the "Contact Us" page
-    2. Try to submit the empty form and verify that an error message about the required fields appears
-    3. Try to submit the form with an invalid email address and verify that a relevant error message appears
-    4. Try to submit the form with all inputs valid and verify that a success message appears.
-
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
+The manual testing of the game was simply playing it and trying all functions such as losing and winning every level. 
+The application was also put through as much pressure as possible by seeing the outmost limits of the hitbox of paddle, ball and bricks. The collions of the walls were tested as well though the same methods. Additionally the game were sent to other people who tested it in the same manner and sent feedback.
+During this testing two main issues were detected:
+1. The hitbox of the paddle doesn't fully match the, the ball sinks into the paddle a bit before bouncing background
+2. In some occurences when the ball is bounces on the edge of the screen it can get stuck bouncing on the very edge of the canvas, it only goes away when you lose the game and the ball resets. 
+These bugs are currently not fixed. 
 
 ## Deployment
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
+This site was deployed through github pages. The method is listed below.
 
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-- Different values for environment variables (Heroku Config Vars)?
-- Different configuration files?
-- Separate git branch?
-
-In addition, if it is not obvious, you should also describe how to run your code locally.
-
+1. Go into the github repository
+2. Click on the settings button
+3. Scroll down until you see the Github Pages heading
+4. Select the master branch on the drop down menu
+5. Press deploy, it will be up after about 10 minutes 
 
 ## Credits
-
+A big thanks to Hugo Zedendahl, Emma Öberg and Vendela Asplund for helping me through this process by testing the game, and providing feedback and support. 
 ### Content
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
+- The text in all pages is made by yours truly.
 
 ### Media
-- The photos used in this site were obtained from ...
+- The art used for all backgrounds are made by yours truly.
 
 ### Acknowledgements
-
-- I received inspiration for this project from X
+- I received a lot of inspiration for this project from the original breakout game, [MDNs tutorial](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript) and Code Explained's [youtube tutorial](https://www.youtube.com/watch?v=FyZ4_T0GZ1U). 
+- The theme of this game was inspired by the instagram page [youmademepost](https://www.instagram.com/youmademepost/)
