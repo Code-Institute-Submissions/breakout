@@ -105,17 +105,39 @@ const ball = {
 
 // ---------------- Score and Lives -------------------- //
 /*
+    These two functions adjust the font and margin of the stats to keep them from overlapping
+*/
+function findSizeOfFont() {
+    if(canvas.width > 1000) {
+        return 35;
+    } else if (canvas.width > 320) {
+        return 25;
+    } else {
+        return 20;
+    }
+}
+
+function lifeCounterRightMargin() {
+    if(canvas.width > 1000) {
+        return 2;
+    } else {
+        return 10;
+    }
+}
+
+/*
     The following function draws the info about levels, lives and score on the canvas
 */
+
 function gameStats(text, textX, textY) {
   ctx.fillStyle = 'white';
-  ctx.font = '25px Quicksand';
+  ctx.font = `${findSizeOfFont()}px Quicksand`;
   ctx.fillText(text, textX, textY);
 }
 
 // Drawing the score, lives, and level using the function above //
 function drawStats() {
-  gameStats(`Score: ${score}`, 35, 35);
-  gameStats(`Lives: ${lives}`, canvas.width - 135, 35);
-  gameStats(`Level: ${level}`, canvas.width / 2 - 45, 35);
+  gameStats(`Score: ${score}`, 35, 40);
+  gameStats(`Lives: ${lives}`, canvas.width - 135 - findSizeOfFont()/lifeCounterRightMargin(), 40);
+  gameStats(`Level: ${level}`, canvas.width / 2 - 45, 40);
 }
